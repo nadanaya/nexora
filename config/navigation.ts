@@ -21,5 +21,5 @@ export type NavItem = {
 };
 
 export const NAVIGATION: NavItem[] = [
-  { label: "홈", href: "/", icon: House },
+  { label: "통제 현황", href: "/", icon: House },
 ];

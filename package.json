@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "test:w07": "node --test tests/w07-domain.test.mjs",
     "setup": "node -e \"const fs=require('fs');if(fs.existsSync('.env.local')){console.log('.env.local 이 이미 있어요')}else{fs.copyFileSync('.env.example','.env.local');console.log('.env.local 을 만들었어요')}\"",
     "db:up": "docker compose -f docker-compose.dev.yml up -d",
     "db:down": "docker compose -f docker-compose.dev.yml down",

@@ -3,8 +3,8 @@ import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "axhub × Next.js",
-  description: "조코딩 AX 파트너스 axhub 위에서 굴러가는 Next.js 바이브코딩 템플릿",
+  title: "NEXORA · 기업 통제 플랫폼",
+  description: "거래처 관계 분석, 금융 통제, 승인과 감사 이력을 연결하는 W07 운영 플랫폼",
 };
 
 // 다크 모드 — 그리기 전에 시스템 설정을 보고 <html data-theme="dark"> 를 붙여요 (깜박임 방지).
