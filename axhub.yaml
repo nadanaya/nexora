@@ -11,6 +11,9 @@ build:
   dockerfile: Dockerfile
   deploy_method: docker
 env:
+  required:
+    - name: W07_IMPORT_TOKEN
+      scope: runtime
   optional:
     - name: APPHUB_API_URL
       scope: runtime

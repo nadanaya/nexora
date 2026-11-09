@@ -1,9 +1,28 @@
 import { db } from '@/lib/db'
+import { timingSafeEqual } from 'node:crypto'
 import { apiError, requireW07Admin } from '@/lib/w07-access'
 import { buildRebateRows, buildRelationshipNetwork, parsePipeCsv, validateRows } from '@/lib/w07-domain.mjs'
 import type { AgencyInput, DepositInput, RebateInput } from '@/lib/w07-domain.mjs'
 
 export const dynamic = 'force-dynamic'
+
+async function importActor(request: Request) {
+  const configuredToken = process.env.W07_IMPORT_TOKEN ?? ''
+  const suppliedToken = request.headers.get('authorization')?.replace(/^Bearer\s+/i, '') ?? ''
+  if (configuredToken && suppliedToken && suppliedToken.length === configuredToken.length) {
+    const left = Buffer.from(configuredToken)
+    const right = Buffer.from(suppliedToken)
+    if (timingSafeEqual(left, right)) {
+      return {
+        user_id: 'nexora-secure-import',
+        name: 'NEXORA 보안 등록',
+        email: '',
+        businessRole: '관리자' as const,
+      }
+    }
+  }
+  return requireW07Admin()
+}
 
 function validation(message: string) {
   const error = new Error(message)
@@ -13,7 +32,7 @@ function validation(message: string) {
 
 export async function POST(request: Request) {
   try {
-    const actor = await requireW07Admin()
+    const actor = await importActor(request)
     const size = Number(request.headers.get('content-length') ?? 0)
     if (size > 15 * 1024 * 1024) throw validation('업로드 전체 크기는 15MB 이하여야 합니다.')
     const form = await request.formData()
