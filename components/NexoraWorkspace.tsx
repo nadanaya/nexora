@@ -3,11 +3,10 @@
 import { Card, buttonVariants } from '@heroui/react'
 import { PageHeader } from '@/components/ax'
 import { Shell } from '@/components/Shell'
-import { W07Dashboard } from '@/components/W07Dashboard'
+import { OperationsDashboard } from '@/components/OperationsDashboard'
 
 export function NexoraWorkspace({
   authenticated,
-  userId,
   userName,
   isAdmin,
   signInUrl,
@@ -30,10 +29,10 @@ export function NexoraWorkspace({
       />
       <Card><Card.Content>
         <p className="t-small">
-          관계 정보의 일치는 검토 신호이며 부정행위 판정이 아닙니다. 회수 계좌는 관계 분석에만 사용하며 지급 계좌로 추정하지 않습니다. 지급은 모의 처리만 기록합니다.
+          관계 정보의 일치는 검토 신호이며 부정행위 판정이 아닙니다. 대표자·주소·등록 정산계좌로 관계를 판정하고, 회수계좌와 지급 수취계좌는 구분합니다. 실제 이체 없이 모의 지급만 기록합니다.
         </p>
       </Card.Content></Card>
-      {authenticated ? <W07Dashboard userId={userId} /> : <Card>
+      {authenticated ? <OperationsDashboard /> : <Card>
         <Card.Header>
           <Card.Title>로그인이 필요합니다</Card.Title>
           <Card.Description>기업 자료와 승인 이력을 보호하기 위해 로그인한 사용자만 이용할 수 있습니다.</Card.Description>
