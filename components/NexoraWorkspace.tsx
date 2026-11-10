@@ -21,15 +21,15 @@ export function NexoraWorkspace({
     <a className={buttonVariants({ variant: 'primary', size: 'sm' })} href={signInUrl}>로그인</a>
   )
   return <Shell appName="NEXORA" account={account} isAdmin={isAdmin}>
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-5">
       <PageHeader
-        title="NEXORA"
-        description="거래처 관계 분석부터 금융 통제, 사람 승인과 감사까지 연결합니다."
-        actions={<span className="t-caption">W07 · 판매장려금 통제</span>}
+        title="판매장려금 통제"
+        description="관계 확인부터 사람 승인, 모의 지급까지."
+        actions={<span className="t-caption whitespace-nowrap">W07 · NEXORA</span>}
       />
       <Card><Card.Content>
         <p className="t-small">
-          관계 정보의 일치는 검토 신호이며 부정행위 판정이 아닙니다. 대표자·주소·등록 정산계좌로 관계를 판정하고, 회수계좌와 지급 수취계좌는 구분합니다. 실제 이체 없이 모의 지급만 기록합니다.
+          실제 은행 이체 없는 모의 지급 환경입니다. 관계 일치는 검토 신호이며, 입금계좌를 지급 수취계좌로 추정하지 않습니다.
         </p>
       </Card.Content></Card>
       {authenticated ? <OperationsDashboard /> : <Card>
