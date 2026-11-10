@@ -1,5 +1,11 @@
 # NEXORA · W07
 
+## 마스터 프롬프트 대응 문서
+
+전체 앱 로컬 실행 설정은 [docker-compose.full.yml](docker-compose.full.yml), 설정·인증·미검증 범위는 [로컬 실행 안내](docs/local-compose.md). Docker가 없는 현재 PC에서는 컨테이너 실행을 검증하지 않았습니다.
+
+[요구사항·공식 자료와 차이](docs/requirements.md), [현재 아키텍처·DB·API](docs/architecture.md), [데이터 계보](docs/data-lineage.md), [결정 규칙](docs/decision-rules.md), [가정·제약](docs/assumptions.md), [시연](docs/demo-scenarios.md), [검증 결과](docs/test-results.md), [문항별 1,000자 이내 초안](docs/submission-answers.md).
+
 ## 제출 전 검증 자료
 
 [최종 검증표](submission/FINAL_VALIDATION.md) · [시연 순서](submission/DEMO_GUIDE.md) · [A04 설명 초안](submission/A04_DRAFT.md) · [AI 실제 연결 설정](submission/AI_SETUP.md). 실제 브라우저·HTTP·PostgreSQL 증거는 `submission/evidence`에 보관합니다. 외부 AI 자격 증명이 없으므로 실제 모델 연동 성공으로 표시하지 않습니다.

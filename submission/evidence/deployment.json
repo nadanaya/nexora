@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-11-10T13:02:05Z",
+  "source_kind": "actual_cli_and_https_verification",
+  "tenant": "lounge",
+  "app_id": "8580d873-165a-4f13-ba8e-ffc68368a229",
+  "commit_sha": "8b0e286c2b465bc37a66d80afef62cd108d43a44",
+  "verify": {
+    "deployment_id": "79126839-65b0-4e2f-a30a-aab8d561c650",
+    "environment": "production",
+    "failure_hint": null,
+    "next_step": null,
+    "production_live": true,
+    "staging_enabled": false,
+    "status": "succeeded",
+    "success": true,
+    "target_environment": "production",
+    "terminal": true,
+    "url": null,
+    "url_checked": false,
+    "url_ok": null
+  },
+  "https_head": {
+    "url": "https://nexora-n28m.axhub.app",
+    "date": "Tue, 10 Nov 2026 13:01:58 GMT",
+    "status": 200,
+    "exit_code": 0
+  },
+  "actual_external_ai": "blocked_missing_credentials",
+  "note": "Evidence generated after deployment; not part of deployed commit."
+}

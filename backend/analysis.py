@@ -27,6 +27,12 @@ class SuggestedTask(StrictModel):
 
 class Analysis(StrictModel):
     summary:str=Field(min_length=1,max_length=2000)
+    evidence:list[Fact]=Field(max_length=30)
+    risk_level:str=Field(pattern='^(LOW|MEDIUM|HIGH|UNKNOWN)$')
+    missing_information:list[str]=Field(max_length=30)
+    recommended_action:str=Field(min_length=1,max_length=1000)
+    affected_departments:list[str]=Field(max_length=10)
+    assumptions:list[str]=Field(max_length=30)
     relationship_evidence:list[Fact]=Field(max_length=30)
     payment_risks:list[Fact]=Field(max_length=30)
     missing_evidence:list[str]=Field(max_length=30)
@@ -79,7 +85,7 @@ def generate(inputs):
         raise D.RuleError('AI_PROVIDER_FAILED','AI 공급자 호출에 실패했습니다. 승인 상태는 유지됩니다.',502)
     except (ValueError,KeyError,IndexError,TypeError):
         raise D.RuleError('AI_FORMAT_INVALID','AI 응답이 요구된 JSON 형식과 다릅니다. 승인 상태는 유지됩니다.',502)
-    cited=result['facts']+result['relationship_evidence']+result['payment_risks']+result['suggested_tasks']
+    cited=result['evidence']+result['facts']+result['relationship_evidence']+result['payment_risks']+result['suggested_tasks']
     D.require(all(set(x['evidence_refs'])<=set(inputs['references']) for x in cited),'AI_EVIDENCE_MISMATCH','AI가 전달하지 않은 근거를 인용했습니다. 결과를 채택하지 않습니다.',502)
     # This authoritative snapshot comes from the rule engine, not the model.
     result['rule_result']=inputs['references']['calculation']

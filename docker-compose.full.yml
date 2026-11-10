@@ -1,0 +1,38 @@
+# 로컬 전용 전체 앱. AXHub 배포에는 기존 Dockerfile/axhub.yaml을 사용합니다.
+# 실행: docker compose --env-file .env.local -f docker-compose.full.yml up --build -d
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: nexora
+      POSTGRES_PASSWORD: ${NEXORA_DB_PASSWORD:?Set NEXORA_DB_PASSWORD in the local env file}
+      POSTGRES_DB: nexora
+    volumes:
+      - nexora_full_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U nexora -d nexora']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    ports:
+      - '127.0.0.1:3000:3000'
+    environment:
+      DATABASE_URL: postgres://nexora:${NEXORA_DB_PASSWORD:?Set NEXORA_DB_PASSWORD in the local env file}@db:5432/nexora
+      NEXORA_MATCH_KEY: ${NEXORA_MATCH_KEY:?Set the stable private match key in the local env file}
+      APPHUB_TENANT: lounge
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+volumes:
+  nexora_full_pg:
