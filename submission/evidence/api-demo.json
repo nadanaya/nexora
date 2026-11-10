@@ -1,0 +1,985 @@
+{
+  "source_kind": "synthetic",
+  "transport": "real_http_gateway_next_fastapi_postgresql",
+  "scenarios": {
+    "A_workflow": "passed",
+    "A_external_AI": "blocked_missing_credentials",
+    "B": "passed",
+    "C": "passed"
+  },
+  "trace": [
+    {
+      "actor": "draft",
+      "path": "cases",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/analysis",
+      "status": 503,
+      "state": null,
+      "error_code": "AI_NOT_CONFIGURED"
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "PENDING_SUPPORT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "APPROVED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": "SCHEDULED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "tasks/57edb142-412b-4497-99c0-ca7a7a23a1ce/resolve",
+      "status": 200,
+      "state": "DONE",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "cases/eafa7bbc-0cc1-4cc4-b875-30da37affc69/actions",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "PENDING_SUPPORT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "PENDING_EXECUTIVE",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "executive",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "APPROVED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "cases/89d17834-c91f-4bfa-a40e-6e3cd71fb784/actions",
+      "status": 200,
+      "state": "SCHEDULED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "tasks/f1416e18-cba1-46a6-bd06-83dfe77193aa/resolve",
+      "status": 200,
+      "state": "DONE",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "relationships/change",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "PENDING_SUPPORT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "APPROVED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "cases/24a199b8-452e-413d-8310-4b84bee17782/actions",
+      "status": 200,
+      "state": "SCHEDULED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "finance",
+      "path": "tasks/b6df9f3d-8a52-4393-8d24-1141946d9ee6/resolve",
+      "status": 200,
+      "state": "DONE",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases",
+      "status": 200,
+      "state": "DRAFT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "ON_HOLD",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REASSESSMENT_REQUIRED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "tasks/5a4ad04a-3fa3-4f5a-9281-f1b1efc445c3/resolve",
+      "status": 200,
+      "state": "DONE",
+      "error_code": null
+    },
+    {
+      "actor": "sales",
+      "path": "tasks/8ea648dc-f5da-4e3e-ae99-c65fe6fe9a3d/resolve",
+      "status": 200,
+      "state": "DONE",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "PENDING_SUPPORT",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    },
+    {
+      "actor": "support",
+      "path": "cases/457654bf-bec2-4076-afb8-4fb722db5b67/actions",
+      "status": 200,
+      "state": "REJECTED",
+      "error_code": null
+    },
+    {
+      "actor": "draft",
+      "path": "workspace",
+      "status": 200,
+      "state": null,
+      "error_code": null
+    }
+  ]
+}

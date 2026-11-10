@@ -1,0 +1,134 @@
+{
+  "at": "20261110T125100Z",
+  "exit_code": 0,
+  "source_kind": "test_execution",
+  "environment": "isolated_postgresql",
+  "tests": [
+    {
+      "name": "test_transitive_and_missing_values",
+      "status": "passed"
+    },
+    {
+      "name": "test_real_source_reconciliation",
+      "status": "passed"
+    },
+    {
+      "name": "test_normal_limit_and_duplicate",
+      "status": "passed"
+    },
+    {
+      "name": "test_executive_and_separation",
+      "status": "passed"
+    },
+    {
+      "name": "test_missing_rejection_resubmit",
+      "status": "passed"
+    },
+    {
+      "name": "test_changed_relationship_invalidates_and_suspends",
+      "status": "passed"
+    },
+    {
+      "name": "test_stale_and_self_approval_and_evidence",
+      "status": "passed"
+    },
+    {
+      "name": "test_paid_change_remains_paid_and_audit_chain",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_pg_concurrent_payment_and_auth",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_bad_signature_and_cross_tenant",
+      "status": "passed"
+    },
+    {
+      "name": "test_every_payout_requires_own_verified_evidence",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_split_regenerates_cases_and_invalidates",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_transaction_rollback_and_audit_immutable",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_amount_correction_preserves_source_and_reapproval",
+      "status": "passed"
+    },
+    {
+      "name": "test_idempotent_key_cannot_change_body",
+      "status": "passed"
+    },
+    {
+      "name": "test_api_ai_missing_configuration_never_changes_approval",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[timeout]",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[http_error]",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[invalid_json]",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[invalid_shape]",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[unknown_evidence]",
+      "status": "passed"
+    },
+    {
+      "name": "test_ai_failures_preserve_rules_and_log_attempt[forged_amount]",
+      "status": "passed"
+    },
+    {
+      "name": "test_valid_mock_ai_uses_graph_evidence_and_cannot_mutate_rules",
+      "status": "passed"
+    },
+    {
+      "name": "test_executive_gate_cannot_be_satisfied_by_support_twice",
+      "status": "passed"
+    },
+    {
+      "name": "test_information_change_marks_previous_ai_explanation_stale",
+      "status": "passed"
+    },
+    {
+      "name": "test_sales_task_completion_and_finance_rejection_schedule",
+      "status": "passed"
+    },
+    {
+      "name": "test_atomic_payment_audit_and_relational_item_records",
+      "status": "passed"
+    },
+    {
+      "name": "test_revoke_payment_race_never_pays_without_valid_approval",
+      "status": "passed"
+    },
+    {
+      "name": "test_actual_external_model_call",
+      "status": "skipped"
+    }
+  ],
+  "source_hashes": {
+    "backend\\analysis.py": "0a0aebb49c149024a5413ef05ce947754367b5e795255a03110609e5c212115a",
+    "backend\\domain.py": "73bd3cf0d78090aebe41d56f9f6e87f1d9a237286139f2f69445e3b45b8b040f",
+    "backend\\launch.py": "49e9c3066e6f3c6cf465fbe0fbb8263471ff110f89526a05036c7f5fcddbf7dd",
+    "backend\\main.py": "9763443aefad7f09eaee8fd8687599f0cfccd360960c507ab446a1568fda1067",
+    "backend\\store.py": "a2f28274d9f3ec0c40e7fe695044d0fa88a700616b419f4419847bd52498a6c9",
+    "backend\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend\\tests\\test_engine.py": "dd50809e96fea8266d4a8e46daff1fbd18a7aa068634bf740ea03fc6af8d4b5d",
+    "backend\\tests\\test_submission.py": "2c8a7d81f07b0d9a4d361a50189441013580dfe8c8c49372c596be12fa11ef11"
+  }
+}

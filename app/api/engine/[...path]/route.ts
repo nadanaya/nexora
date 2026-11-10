@@ -1,5 +1,6 @@
 import { createHash, createHmac } from 'node:crypto'
 import { makeAxhub, me, TENANT } from '@/lib/axhub-server'
+import { isAllowedOrigin } from '@/lib/request-origin.mjs'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
@@ -12,10 +13,9 @@ async function proxy(request: Request, context: { params: Promise<{ path: string
   const secret = process.env.NEXORA_INTERNAL_SECRET
   if (!secret || secret.length < 32) return Response.json({ error: '업무 서버 연결 설정이 필요합니다.' }, { status: 503 })
   if (request.method !== 'GET') {
-    const origin = request.headers.get('origin')
-    const expected = new URL(request.url).origin
-    if (origin && origin !== expected) return Response.json({ error: '다른 사이트에서 보낸 요청입니다.' }, { status: 403 })
-    if (request.headers.get('sec-fetch-site') === 'cross-site') return Response.json({ error: '요청 출처가 올바르지 않습니다.' }, { status: 403 })
+    if (!isAllowedOrigin({ origin: request.headers.get('origin'), host: request.headers.get('host'), url: request.url, fetchSite: request.headers.get('sec-fetch-site') })) {
+      return Response.json({ error: '다른 사이트에서 보낸 요청입니다.' }, { status: 403 })
+    }
   }
   const { path } = await context.params
   if (path.some(p => !/^[a-zA-Z0-9_-]+$/.test(p))) return Response.json({ error: '잘못된 경로입니다.' }, { status: 400 })
@@ -49,7 +49,7 @@ async function proxy(request: Request, context: { params: Promise<{ path: string
   const identity = Buffer.from(JSON.stringify({ id: visitor.user_id, tenant: TENANT, admin: visitor.is_admin })).toString('hex')
   const canonical = [timestamp, request.method, pathname, identity, createHash('sha256').update(body).digest('hex')].join('\n')
   try {
-    const result = await fetch(`http://127.0.0.1:8000${pathname}`, {
+    const result = await fetch(`http://127.0.0.1:${process.env.NEXORA_API_PORT || '8000'}${pathname}`, {
       method: request.method,
       headers: { 'Content-Type': 'application/json', 'x-nx-time': timestamp, 'x-nx-identity': identity,
         'x-nx-signature': createHmac('sha256', secret).update(canonical).digest('hex') },

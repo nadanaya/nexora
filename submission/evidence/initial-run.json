@@ -1,0 +1,15 @@
+{
+  "source_kind": "test_execution",
+  "scope": "first expanded PostgreSQL run",
+  "passed": 26,
+  "failed": 1,
+  "skipped": 1,
+  "failure": {
+    "test": "test_ai_failures_preserve_rules_and_log_attempt[forged_amount]",
+    "stage": "DB reconnection after successful 502 assertion",
+    "error": "psycopg.errors.ConnectionTimeout",
+    "timeout_seconds": 8
+  },
+  "external_AI": "blocked_missing_credentials",
+  "note": "Original terminal output retained in chat. No assertion or approval criterion was weakened for rerun."
+}

@@ -10,3 +10,5 @@ Dockerfile
 **/__pycache__
 **/*.pyc
 backend/tests
+scripts/demo*.py
+submission

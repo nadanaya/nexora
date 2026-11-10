@@ -1,0 +1,31 @@
+{
+  "source_kind": "synthetic",
+  "method": "real_browser_and_http_with_isolated_postgresql",
+  "browser_cases": {
+    "A": {
+      "state": "SIMULATED_PAID",
+      "AI": "blocked_missing_credentials",
+      "self_approval_button": "disabled",
+      "proof": "browser-A.png"
+    },
+    "B": {
+      "state": "PENDING_SUPPORT",
+      "exposure_before": 2400000,
+      "exposure_after": 900000,
+      "old_schedule": "SUSPENDED",
+      "proof": "browser-B.png"
+    },
+    "C": {
+      "state": "REJECTED",
+      "sales_task": "DONE",
+      "schedule": null,
+      "proof": [
+        "browser-C-hold.png",
+        "browser-C-rejected.png"
+      ]
+    }
+  },
+  "payment_item_rows": 2,
+  "payment_count": 2,
+  "audit_rows": 141
+}

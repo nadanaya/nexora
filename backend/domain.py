@@ -142,6 +142,10 @@ def reconcile(s):
 def task(s,actor,case,department,title,reason):
     existing = next((t for t in s['tasks'].values() if t['case']==case and t['title']==title and t['state']=='OPEN'),None)
     if existing:
+        if existing['reason']!=reason:
+            existing['reason']=reason
+            existing['updated_at']=now()
+            event(s,actor,'TASK_UPDATED',existing['id'],dict(reason=reason))
         return existing
     t = dict(id=str(uuid4()),case=case,department=department,title=title,reason=reason,state='OPEN', created_at=now())
     s['tasks'][t['id']]=t
@@ -186,6 +190,8 @@ def invalidate(s,actor,c,reason):
     c['revision']+=1
     c['state']='REASSESSMENT_REQUIRED'
     c['approvals']=[]
+    if c.get('analysis'):
+        c['analysis']['stale']=True
     if c.get('schedule'):
         c['schedule']['state']='SUSPENDED'
         event(s,actor,'SCHEDULE_SUSPENDED',c['id'],dict(reason=reason))
@@ -283,6 +289,9 @@ def operate(s,actor,id,body,key):
         require(actor['role']==('영업지원팀' if c['state']=='PENDING_SUPPORT' else '영업임원'),'FORBIDDEN','해당 승인자가 거절해야 합니다.',403)
         c['state']='REJECTED'
         c['approvals']=[]
+        if c.get('schedule'):
+            c['schedule']['state']='CANCELLED'
+            event(s,actor,'SCHEDULE_CANCELLED',id,dict(reason=reason))
         task(s,actor,id,'영업팀','거절 사유 보완',reason)
     elif action=='revoke':
         require(actor['id'] in [a['actor'] for a in c['approvals']],'FORBIDDEN','승인 당사자만 승인을 취소합니다.',403)
@@ -349,4 +358,4 @@ def public_state(s,actor):
         rebates=list(s['rebates'].values()),groups=groups,
         edges=[dict(left=a,right=b,**data) for a,b,data in g.edges(data=True)],cases=cases,
         tasks=list(s['tasks'].values()),payments=list(s['payments'].values()),
-        impacts=list(s['impacts'].values()),events=s['events'][-100:],members=s['members'] if actor['admin'] else {})
+        impacts=list(s['impacts'].values()),events=s['events'][-100:],members=s['members'] if actor['admin'] else {},scenario=s.get('scenario'))

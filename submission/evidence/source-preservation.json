@@ -1,0 +1,23 @@
+[
+  {
+    "kind": "agencies",
+    "path": "..\\01_참가자_배포용\\04_원본데이터\\01_corevia\\master\\m_agency_cv.csv",
+    "baseline_sha256": "10b959e3d1f13987c5da1d6cc81172de881f43b6f94e2d72267aa1e8a3f7bcc7",
+    "current_sha256": "10b959e3d1f13987c5da1d6cc81172de881f43b6f94e2d72267aa1e8a3f7bcc7",
+    "unchanged": true
+  },
+  {
+    "kind": "rebates",
+    "path": "..\\01_참가자_배포용\\04_원본데이터\\01_corevia\\sales\\sales_rebate_payment_cv.csv",
+    "baseline_sha256": "820a4e96e2ae06b361a9b39d3de428af1c43c0a659c41e2dbd25a9b41c490ac5",
+    "current_sha256": "820a4e96e2ae06b361a9b39d3de428af1c43c0a659c41e2dbd25a9b41c490ac5",
+    "unchanged": true
+  },
+  {
+    "kind": "deposits",
+    "path": "..\\01_참가자_배포용\\04_원본데이터\\01_corevia\\financials\\fin_collection_history_cv.csv",
+    "baseline_sha256": "65831ca36482ce21fa59ff7883ba64c15755280745fbf6bdc83562f7898be4fa",
+    "current_sha256": "65831ca36482ce21fa59ff7883ba64c15755280745fbf6bdc83562f7898be4fa",
+    "unchanged": true
+  }
+]

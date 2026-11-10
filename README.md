@@ -1,5 +1,9 @@
 # NEXORA · W07
 
+## 제출 전 검증 자료
+
+[최종 검증표](submission/FINAL_VALIDATION.md) · [시연 순서](submission/DEMO_GUIDE.md) · [A04 설명 초안](submission/A04_DRAFT.md) · [AI 실제 연결 설정](submission/AI_SETUP.md). 실제 브라우저·HTTP·PostgreSQL 증거는 `submission/evidence`에 보관합니다. 외부 AI 자격 증명이 없으므로 실제 모델 연동 성공으로 표시하지 않습니다.
+
 React·TypeScript·Tailwind 화면과 FastAPI·NetworkX·PostgreSQL 업무 서버를 연결한 판매장려금 운영 앱입니다. 관계 판정, 월 합산, 증빙 보류, 사람 승인, 승인 취소·거절·재심사, 관계 변경 영향, 영업 작업·재무 일정, 모의 지급과 감사 이력을 구현합니다. 실제 은행 이체는 없습니다.
 
 ## 구조와 실행

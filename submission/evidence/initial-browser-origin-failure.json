@@ -1,0 +1,2924 @@
+{
+  "source_kind": "synthetic",
+  "scope": "isolated_loopback_demo",
+  "external_ai": {
+    "configured": false,
+    "required": [
+      "LLM_API_KEY",
+      "LLM_BASE_URL",
+      "LLM_MODEL"
+    ],
+    "mode": "external_model"
+  },
+  "cases": [
+    {
+      "id": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "items": [
+        "REB-API-C1",
+        "REB-API-C2",
+        "REB-API-C3"
+      ],
+      "month": "2026-06",
+      "state": "SUPERSEDED",
+      "agency": "API-C1",
+      "payout": {
+        "API-C1": {
+          "masked": "••••5001"
+        },
+        "API-C2": {
+          "masked": "••••5002"
+        },
+        "API-C3": {
+          "masked": "••••5003"
+        }
+      },
+      "creator": "demo-draft",
+      "evidence": [
+        {
+          "id": "d61bb750-6208-44f7-9928-2623eab0cfe4",
+          "kind": "settlement",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:48.898052+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "217bc4bd-a950-480b-a3dc-c40a063fd31b",
+          "kind": "relationship",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:50.836885+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "4677e535-11a8-4d78-b0d4-a6923ef344df",
+          "kind": "payout",
+          "agency": "API-C1",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:52.814990+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "802f7c80-7888-4843-b760-73e848f1653c",
+          "kind": "payout",
+          "agency": "API-C2",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:54.402728+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "055c827d-c297-419f-8efe-3f960f3728d1",
+          "kind": "payout",
+          "agency": "API-C3",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:55.978155+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        }
+      ],
+      "revision": 2,
+      "schedule": {
+        "date": "2026-07-03",
+        "actor": "demo-finance",
+        "state": "SUSPENDED",
+        "amount": 2400000
+      },
+      "approvals": [],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-C1"
+        ],
+        "exposure": 900000,
+        "executive": false,
+        "items": [
+          "REB-API-C1",
+          "REB-API-C2",
+          "REB-API-C3"
+        ],
+        "amount": 2400000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": [
+        "그룹 분리 후 심사 재기안 필요"
+      ]
+    },
+    {
+      "id": "2b425b36-f4fe-4cfe-be2b-852997680c98",
+      "items": [
+        "REB-API-C2"
+      ],
+      "month": "2026-06",
+      "state": "DRAFT",
+      "agency": "API-C2",
+      "payout": {},
+      "creator": "demo-draft",
+      "evidence": [],
+      "revision": 1,
+      "schedule": null,
+      "approvals": [],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-C2"
+        ],
+        "exposure": 800000,
+        "executive": false,
+        "items": [
+          "REB-API-C2"
+        ],
+        "amount": 800000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": [
+        "정산 근거 없음",
+        "검증된 지급 수취계좌 증빙 없음",
+        "관계·입금 불일치 소명 검토 필요",
+        "지급 대상별 수취계좌 미확인"
+      ]
+    },
+    {
+      "id": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "items": [
+        "REB-API-C1"
+      ],
+      "month": "2026-06",
+      "state": "SCHEDULED",
+      "agency": "API-C1",
+      "payout": {
+        "API-C1": {
+          "masked": "••••5001"
+        }
+      },
+      "creator": "demo-draft",
+      "evidence": [
+        {
+          "id": "cae151f9-c508-46e0-ae07-e4fdf1ac62dd",
+          "kind": "settlement",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:03.459267+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "95465721-1534-45f1-8399-bb2e155c63cb",
+          "kind": "relationship",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:05.338216+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "0b5fce91-73ee-47ef-bf45-31cad6c5db5f",
+          "kind": "payout",
+          "agency": "API-C1",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:07.444293+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        }
+      ],
+      "revision": 1,
+      "schedule": {
+        "date": "2026-07-03",
+        "actor": "demo-finance",
+        "state": "SCHEDULED",
+        "amount": 900000
+      },
+      "approvals": [
+        {
+          "at": "2026-11-10T06:04:09.028163+00:00",
+          "role": "영업지원팀",
+          "actor": "demo-support",
+          "revision": 1,
+          "context_hash": "601cc1e5dbe129f72999f8339ab33fcc40fe804da664888a7c53e1b4a5840107"
+        }
+      ],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-C1"
+        ],
+        "exposure": 900000,
+        "executive": false,
+        "items": [
+          "REB-API-C1"
+        ],
+        "amount": 900000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": []
+    },
+    {
+      "id": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "items": [
+        "REB-API-N1"
+      ],
+      "month": "2026-06",
+      "state": "SIMULATED_PAID",
+      "agency": "API-N1",
+      "payout": {
+        "API-N1": {
+          "masked": "••••5001"
+        }
+      },
+      "creator": "demo-draft",
+      "evidence": [
+        {
+          "id": "36e370a8-0f04-4719-a662-dd962012bfc4",
+          "kind": "settlement",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:38.848024+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "7aa1f790-3810-4823-8c73-18aca6c8be94",
+          "kind": "relationship",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:40.695043+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "0d8a38ee-1604-4f1f-9e04-7e2743143b2e",
+          "kind": "payout",
+          "agency": "API-N1",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:03:42.594444+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        }
+      ],
+      "revision": 1,
+      "schedule": {
+        "date": "2026-07-03",
+        "actor": "demo-finance",
+        "state": "SIMULATED_PAID",
+        "amount": 2000000
+      },
+      "approvals": [
+        {
+          "at": "2026-11-10T06:03:44.141945+00:00",
+          "role": "영업지원팀",
+          "actor": "demo-support",
+          "revision": 1,
+          "context_hash": "3cf68385d253dcc8e6021ac738fee7495ab468979035c4cc56aa6e0e25da2c3e"
+        }
+      ],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-N1"
+        ],
+        "exposure": 2000000,
+        "executive": false,
+        "items": [
+          "REB-API-N1"
+        ],
+        "amount": 2000000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": []
+    },
+    {
+      "id": "c360effe-64fe-4d8b-a9c8-db9dc7edea41",
+      "items": [
+        "REB-API-C3"
+      ],
+      "month": "2026-06",
+      "state": "DRAFT",
+      "agency": "API-C3",
+      "payout": {},
+      "creator": "demo-draft",
+      "evidence": [],
+      "revision": 1,
+      "schedule": null,
+      "approvals": [],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-C3"
+        ],
+        "exposure": 700000,
+        "executive": false,
+        "items": [
+          "REB-API-C3"
+        ],
+        "amount": 700000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": [
+        "정산 근거 없음",
+        "검증된 지급 수취계좌 증빙 없음",
+        "지급 대상별 수취계좌 미확인"
+      ]
+    },
+    {
+      "id": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "items": [
+        "REB-API-H1"
+      ],
+      "month": "2026-06",
+      "state": "REJECTED",
+      "agency": "API-H1",
+      "payout": {
+        "API-H1": {
+          "masked": "••••5001"
+        }
+      },
+      "creator": "demo-draft",
+      "evidence": [
+        {
+          "id": "0fd8b875-43c8-406e-a2b6-f096b38fbbaa",
+          "kind": "settlement",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:14.468503+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "cf657d4a-9269-4818-8587-506e6db346cd",
+          "kind": "relationship",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:16.632689+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        },
+        {
+          "id": "54081105-f3f6-4e91-b909-a620c1554587",
+          "kind": "payout",
+          "agency": "API-H1",
+          "verified": true,
+          "reference": "합성 제출 검증 회신",
+          "source_kind": "synthetic",
+          "verified_at": "2026-11-10T06:04:18.730300+00:00",
+          "verified_by": "demo-support",
+          "submitted_by": "demo-sales"
+        }
+      ],
+      "revision": 4,
+      "schedule": null,
+      "approvals": [],
+      "source_kind": "derived",
+      "context": {
+        "group": [
+          "API-H1"
+        ],
+        "exposure": 900000,
+        "executive": false,
+        "items": [
+          "REB-API-H1"
+        ],
+        "amount": 900000,
+        "rules": "w07-2of3-exact-v1"
+      },
+      "blockers": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "0f4f1450-fa4b-4db2-bb4b-a3d92a740baa",
+      "case": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "state": "DONE",
+      "title": "지급 일정 반영",
+      "reason": "사람 승인 완료. 모의 지급 일정을 등록하세요.",
+      "created_at": "2026-11-10T06:04:09.028163+00:00",
+      "department": "재무팀",
+      "resolution": "합성 승인 결과에 따른 일정 반영 확인",
+      "resolved_by": "demo-finance"
+    },
+    {
+      "id": "283426b3-96c3-41f0-ad1e-aac5a16e1d2e",
+      "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "state": "DONE",
+      "title": "필수 증빙 보완",
+      "reason": "정산 근거 없음 / 검증된 지급 수취계좌 증빙 없음 / 지급 대상별 수취계좌 미확인",
+      "created_at": "2026-11-10T06:04:12.105818+00:00",
+      "department": "영업팀",
+      "resolution": "합성 증빙 회신 검토 완료",
+      "resolved_by": "demo-sales"
+    },
+    {
+      "id": "2f4c6e84-67e1-48cc-8e22-a95849662b6b",
+      "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "state": "OPEN",
+      "title": "지급 일정 재검토",
+      "reason": "증빙 또는 수취계좌 변경",
+      "created_at": "2026-11-10T06:04:13.341665+00:00",
+      "department": "재무팀"
+    },
+    {
+      "id": "6fc92bda-2125-430d-a3d0-f86357a2be74",
+      "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "state": "OPEN",
+      "title": "거절 사유 보완",
+      "reason": "합성 제출 검증 회신",
+      "created_at": "2026-11-10T06:04:21.336721+00:00",
+      "department": "영업팀"
+    },
+    {
+      "id": "7482d720-b94d-4f33-a47a-7909c15a21fd",
+      "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "state": "OPEN",
+      "title": "변경 영향 소명",
+      "reason": "합성 관계 분리",
+      "created_at": "2026-11-10T06:04:00.874018+00:00",
+      "department": "영업팀"
+    },
+    {
+      "id": "a6925174-5c2f-4d38-ab0e-69be7cd3a856",
+      "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "state": "OPEN",
+      "title": "지급 일정 재검토",
+      "reason": "합성 관계 분리",
+      "created_at": "2026-11-10T06:04:00.874018+00:00",
+      "department": "재무팀"
+    },
+    {
+      "id": "c557b078-927c-409d-9c47-02a1eb7ea20c",
+      "case": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "state": "DONE",
+      "title": "지급 일정 반영",
+      "reason": "사람 승인 완료. 모의 지급 일정을 등록하세요.",
+      "created_at": "2026-11-10T06:03:44.141945+00:00",
+      "department": "재무팀",
+      "resolution": "합성 승인 결과에 따른 일정 반영 확인",
+      "resolved_by": "demo-finance"
+    },
+    {
+      "id": "c94c9846-b40b-4cce-889e-a33d1fb26e2b",
+      "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "state": "DONE",
+      "title": "변경 영향 소명",
+      "reason": "증빙 또는 수취계좌 변경",
+      "created_at": "2026-11-10T06:04:13.341665+00:00",
+      "department": "영업팀",
+      "resolution": "합성 증빙 회신 검토 완료",
+      "resolved_by": "demo-sales"
+    },
+    {
+      "id": "ecff2824-1a3d-4a33-b511-e639b4331dae",
+      "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "state": "DONE",
+      "title": "지급 일정 반영",
+      "reason": "사람 승인 완료. 모의 지급 일정을 등록하세요.",
+      "created_at": "2026-11-10T06:03:58.613832+00:00",
+      "department": "재무팀",
+      "resolution": "합성 승인 결과에 따른 일정 반영 확인",
+      "resolved_by": "demo-finance"
+    }
+  ],
+  "payments": [
+    {
+      "at": "2026-11-10T06:03:46.637029+00:00",
+      "case": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "mode": "simulation",
+      "items": [
+        "REB-API-N1"
+      ],
+      "amount": 2000000,
+      "revision": 1,
+      "receipt_id": "SIM-4cd23bf0-77d9-4b37-87e0-c8ec68ba8e96",
+      "source_kind": "synthetic",
+      "request_hash": "680336e8d2c49b56bd6f7706a38e91d38cdb277f6eee91f0775ef911905c8d1a"
+    }
+  ],
+  "events": [
+    {
+      "at": "2026-11-10T06:01:34.477502+00:00",
+      "id": "d71a82e4-d607-4f4d-8748-5386d3715b24",
+      "hash": "f1fd1aeaef74d0ac7adb22edece03573e6f2527914b26a9a3dfb811471eeb23b",
+      "kind": "DATASET_IMPORTED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "dataset",
+      "details": {
+        "total": 10600000,
+        "rebates": 10,
+        "agencies": 10,
+        "deposits": 2,
+        "mismatches": [
+          "DEP-API",
+          "DEP-WEB"
+        ],
+        "source_kind": "derived",
+        "current_total": 10600000,
+        "rules_version": "w07-2of3-exact-v1",
+        "status_counts": {
+          "미지급": 10
+        },
+        "related_groups": [
+          [
+            "API-C1",
+            "API-C2",
+            "API-C3"
+          ],
+          [
+            "WEB-C1",
+            "WEB-C2",
+            "WEB-C3"
+          ]
+        ],
+        "unpaid_including_rejected": 10600000
+      },
+      "sequence": 1,
+      "previous_hash": ""
+    },
+    {
+      "at": "2026-11-10T06:01:34.478502+00:00",
+      "id": "738d05e7-f2f4-43c8-b5b0-9398b66048d2",
+      "hash": "20fa247b835d05fac333051b99ac7102b67e2ef3c5b547cd8246d0cab1b616f1",
+      "kind": "ROLE_ASSIGNED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "demo-draft",
+      "details": {
+        "role": "영업지원팀",
+        "source_kind": "synthetic"
+      },
+      "sequence": 2,
+      "previous_hash": "f1fd1aeaef74d0ac7adb22edece03573e6f2527914b26a9a3dfb811471eeb23b"
+    },
+    {
+      "at": "2026-11-10T06:01:34.478502+00:00",
+      "id": "59180932-fe6b-4bee-88aa-9d735637215d",
+      "hash": "e3d426d515a3887f3aa66b7ec7d0e669e2f59c820a0c954f632a7bd91fa16862",
+      "kind": "ROLE_ASSIGNED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "demo-support",
+      "details": {
+        "role": "영업지원팀",
+        "source_kind": "synthetic"
+      },
+      "sequence": 3,
+      "previous_hash": "20fa247b835d05fac333051b99ac7102b67e2ef3c5b547cd8246d0cab1b616f1"
+    },
+    {
+      "at": "2026-11-10T06:01:34.478502+00:00",
+      "id": "a0799a84-047e-4f7e-9dde-1d01b24abada",
+      "hash": "145db0f360299c9334d9cdee42490fa37a98dcfa176c59188b514f879e99079a",
+      "kind": "ROLE_ASSIGNED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "demo-sales",
+      "details": {
+        "role": "영업팀",
+        "source_kind": "synthetic"
+      },
+      "sequence": 4,
+      "previous_hash": "e3d426d515a3887f3aa66b7ec7d0e669e2f59c820a0c954f632a7bd91fa16862"
+    },
+    {
+      "at": "2026-11-10T06:01:34.478502+00:00",
+      "id": "cf22807d-d8c5-4cc2-80a1-22618d307d27",
+      "hash": "0ec53bcf85092e2f20091e90f384bbe77895984ef2f4c2cac6c098e937877b5e",
+      "kind": "ROLE_ASSIGNED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "demo-executive",
+      "details": {
+        "role": "영업임원",
+        "source_kind": "synthetic"
+      },
+      "sequence": 5,
+      "previous_hash": "145db0f360299c9334d9cdee42490fa37a98dcfa176c59188b514f879e99079a"
+    },
+    {
+      "at": "2026-11-10T06:01:34.478502+00:00",
+      "id": "891256e0-3cbd-4b28-b014-1a4dd48c206c",
+      "hash": "102c1533cb9e35370c9363357c970dd0ce655c81305cb5edca3ee1f8de9d5e6b",
+      "kind": "ROLE_ASSIGNED",
+      "role": "조회전용",
+      "actor": "demo-system",
+      "target": "demo-finance",
+      "details": {
+        "role": "재무팀",
+        "source_kind": "synthetic"
+      },
+      "sequence": 6,
+      "previous_hash": "0ec53bcf85092e2f20091e90f384bbe77895984ef2f4c2cac6c098e937877b5e"
+    },
+    {
+      "at": "2026-11-10T06:03:36.637921+00:00",
+      "id": "763029a6-0fb5-4dae-a19f-b8c5ded7ab84",
+      "hash": "1b2cc1bf4d28c28af414b1f29f3b3ad0c15742e56470e46492e500ed80f3853b",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "items": [
+          "REB-API-N1"
+        ],
+        "context": {
+          "group": [
+            "API-N1"
+          ],
+          "items": [
+            "REB-API-N1"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 2000000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 2000000,
+          "versions": {
+            "API-N1": 1
+          },
+          "executive": false
+        }
+      },
+      "sequence": 7,
+      "previous_hash": "102c1533cb9e35370c9363357c970dd0ce655c81305cb5edca3ee1f8de9d5e6b"
+    },
+    {
+      "at": "2026-11-10T06:03:37.017687+00:00",
+      "id": "815a7f9f-67b8-4885-80b0-da796f496942",
+      "hash": "a10b30f2c28013d6d27461897e5083182c68e5cb2545e7c30245b4d510fdcd51",
+      "kind": "AI_ANALYSIS_FAILED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "code": "AI_NOT_CONFIGURED",
+        "revision": 1,
+        "input_hash": "3463c5d8a5f4f8e6c77b6e548a74e48da9be2bf8bd0de5ffbba4e28bbbdf264d"
+      },
+      "sequence": 8,
+      "previous_hash": "1b2cc1bf4d28c28af414b1f29f3b3ad0c15742e56470e46492e500ed80f3853b"
+    },
+    {
+      "at": "2026-11-10T06:03:37.953971+00:00",
+      "id": "d3f8cf72-f466-4af4-b3df-78d9f5ecaacc",
+      "hash": "52834fd2da2322956ece20c482cd161b94e5f983adc271bbffc0c67b50b93799",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 9,
+      "previous_hash": "a10b30f2c28013d6d27461897e5083182c68e5cb2545e7c30245b4d510fdcd51"
+    },
+    {
+      "at": "2026-11-10T06:03:38.848024+00:00",
+      "id": "54807017-0c55-41c9-bd8f-43104ebd24c2",
+      "hash": "65c9711d733d9b821eed2d46786a44cddf2f1f26a4520137c0c55262d0403322",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 10,
+      "previous_hash": "52834fd2da2322956ece20c482cd161b94e5f983adc271bbffc0c67b50b93799"
+    },
+    {
+      "at": "2026-11-10T06:03:39.768128+00:00",
+      "id": "db1f6d4f-c51b-452f-ae03-b41c17cab394",
+      "hash": "745dbc1e3eb7744a8008fc5cc38d3f28df08dd418c435ff75dd8a4bb284f4004",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 11,
+      "previous_hash": "65c9711d733d9b821eed2d46786a44cddf2f1f26a4520137c0c55262d0403322"
+    },
+    {
+      "at": "2026-11-10T06:03:40.695043+00:00",
+      "id": "ce589047-aca8-4eca-bd3d-c24823eaf955",
+      "hash": "14c1dc8f68a322cc53141554c4a9bcc9e6ab83572a41d6156cf1f02991efa00a",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 12,
+      "previous_hash": "745dbc1e3eb7744a8008fc5cc38d3f28df08dd418c435ff75dd8a4bb284f4004"
+    },
+    {
+      "at": "2026-11-10T06:03:41.663274+00:00",
+      "id": "0989ca2f-8b15-4f87-b62f-19fcd82f2e62",
+      "hash": "887404d3ed48d9f316628a23e14aa774c0ac2b35d11452c0eaa7f607a95a6f08",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 13,
+      "previous_hash": "14c1dc8f68a322cc53141554c4a9bcc9e6ab83572a41d6156cf1f02991efa00a"
+    },
+    {
+      "at": "2026-11-10T06:03:42.594444+00:00",
+      "id": "d0eed1a8-e03b-435e-b990-5949719a4c1e",
+      "hash": "773ae4ed0c839899926b34eca40cd2e46644a2fb183582e0c31573a5fb17cef8",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 14,
+      "previous_hash": "887404d3ed48d9f316628a23e14aa774c0ac2b35d11452c0eaa7f607a95a6f08"
+    },
+    {
+      "at": "2026-11-10T06:03:43.545474+00:00",
+      "id": "bd72c559-4d88-484c-8047-966cc2ad39c2",
+      "hash": "d56c02da66e7b4f9d8ffa028dbeb64228913cbc426453169abe6656428befbe6",
+      "kind": "SUBMIT",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "PENDING_SUPPORT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 15,
+      "previous_hash": "773ae4ed0c839899926b34eca40cd2e46644a2fb183582e0c31573a5fb17cef8"
+    },
+    {
+      "at": "2026-11-10T06:03:44.141945+00:00",
+      "id": "4c6da664-1135-4556-a99c-c431dd288cc2",
+      "hash": "15bb9df7e121fc87ad8330139278956c67b54fb4af6e67624b6e9e0ab1a0b9cd",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "c557b078-927c-409d-9c47-02a1eb7ea20c",
+      "details": {
+        "case": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+        "title": "지급 일정 반영",
+        "department": "재무팀"
+      },
+      "sequence": 16,
+      "previous_hash": "d56c02da66e7b4f9d8ffa028dbeb64228913cbc426453169abe6656428befbe6"
+    },
+    {
+      "at": "2026-11-10T06:03:44.141945+00:00",
+      "id": "7e5f9e25-be7c-4d5c-912f-1ccc81452c0b",
+      "hash": "3c4ccbe5ee4949eec8db62d93abe514caf2803d6b5ce3fb197e5987c2f3b926b",
+      "kind": "APPROVE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "APPROVED",
+        "before": "PENDING_SUPPORT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 17,
+      "previous_hash": "15bb9df7e121fc87ad8330139278956c67b54fb4af6e67624b6e9e0ab1a0b9cd"
+    },
+    {
+      "at": "2026-11-10T06:03:45.099372+00:00",
+      "id": "fb25563b-b434-4b5b-a6a5-b918e7abb931",
+      "hash": "801a6127b3856bceb607300552f74c12d3ffe70ad29c2a4ccda6f8881f2a4fa4",
+      "kind": "SCHEDULE",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "after": "SCHEDULED",
+        "before": "APPROVED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 18,
+      "previous_hash": "3c4ccbe5ee4949eec8db62d93abe514caf2803d6b5ce3fb197e5987c2f3b926b"
+    },
+    {
+      "at": "2026-11-10T06:03:45.723777+00:00",
+      "id": "33b20ff8-6ba3-4df0-9d01-fc84e86f9a20",
+      "hash": "1b4411c150de098805b6cac9cda58d2dc205bc536c8eb5829f5af26e59dd3de3",
+      "kind": "TASK_RESOLVED",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "c557b078-927c-409d-9c47-02a1eb7ea20c",
+      "details": {
+        "reason": "합성 승인 결과에 따른 일정 반영 확인"
+      },
+      "sequence": 19,
+      "previous_hash": "801a6127b3856bceb607300552f74c12d3ffe70ad29c2a4ccda6f8881f2a4fa4"
+    },
+    {
+      "at": "2026-11-10T06:03:46.637029+00:00",
+      "id": "bcebd1c8-2621-4757-ab97-91b613b55246",
+      "hash": "b298b55edc4589ad6e947aff0596bcf21f801dd341abb19a768f63081c6b0728",
+      "kind": "SIMULATED_PAYMENT",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+      "details": {
+        "at": "2026-11-10T06:03:46.637029+00:00",
+        "case": "8e331c03-a420-4df2-9dd0-ab064e6b39fb",
+        "mode": "simulation",
+        "items": [
+          "REB-API-N1"
+        ],
+        "amount": 2000000,
+        "revision": 1,
+        "receipt_id": "SIM-4cd23bf0-77d9-4b37-87e0-c8ec68ba8e96",
+        "source_kind": "synthetic",
+        "request_hash": "680336e8d2c49b56bd6f7706a38e91d38cdb277f6eee91f0775ef911905c8d1a"
+      },
+      "sequence": 20,
+      "previous_hash": "1b4411c150de098805b6cac9cda58d2dc205bc536c8eb5829f5af26e59dd3de3"
+    },
+    {
+      "at": "2026-11-10T06:03:46.966404+00:00",
+      "id": "009bcddd-515b-4544-a305-84c443254096",
+      "hash": "5b2246aff08bac18965a734e29437197284d2617884c9136fe7f1a6fb5a04d2c",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "items": [
+          "REB-API-C1",
+          "REB-API-C2",
+          "REB-API-C3"
+        ],
+        "context": {
+          "group": [
+            "API-C1",
+            "API-C2",
+            "API-C3"
+          ],
+          "items": [
+            "REB-API-C1",
+            "REB-API-C2",
+            "REB-API-C3"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 2400000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 2400000,
+          "versions": {
+            "API-C1": 1,
+            "API-C2": 1,
+            "API-C3": 1
+          },
+          "executive": true
+        }
+      },
+      "sequence": 21,
+      "previous_hash": "b298b55edc4589ad6e947aff0596bcf21f801dd341abb19a768f63081c6b0728"
+    },
+    {
+      "at": "2026-11-10T06:03:47.877144+00:00",
+      "id": "14934ef8-82a4-441b-bb91-cfe33a90c8db",
+      "hash": "5c3eae651372948ff458480e3498adc4f887ae03396a39ca68da669ac01f6491",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 22,
+      "previous_hash": "5b2246aff08bac18965a734e29437197284d2617884c9136fe7f1a6fb5a04d2c"
+    },
+    {
+      "at": "2026-11-10T06:03:48.898052+00:00",
+      "id": "2a405698-3d4a-43c0-be57-ab96c323bb42",
+      "hash": "54c88cb282e4b7419c4addf8ba0e0df63b844a5fb62d13a0676165e3ea8d0712",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 23,
+      "previous_hash": "5c3eae651372948ff458480e3498adc4f887ae03396a39ca68da669ac01f6491"
+    },
+    {
+      "at": "2026-11-10T06:03:49.892407+00:00",
+      "id": "57091e73-e68e-43b7-b17f-6b85c327c9f0",
+      "hash": "d5ac4575d8ed496f6315b326eb9b2f3e85eb51eeb38d5ab55cf8eb4735c48d22",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 24,
+      "previous_hash": "54c88cb282e4b7419c4addf8ba0e0df63b844a5fb62d13a0676165e3ea8d0712"
+    },
+    {
+      "at": "2026-11-10T06:03:50.836885+00:00",
+      "id": "6d2bd485-3f7d-4fd8-9ecf-56a78dbb3206",
+      "hash": "b0fa8f250651103b87536aa3281f1fb7a22c0caaec490eca3e7af14b8a0a3741",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 25,
+      "previous_hash": "d5ac4575d8ed496f6315b326eb9b2f3e85eb51eeb38d5ab55cf8eb4735c48d22"
+    },
+    {
+      "at": "2026-11-10T06:03:51.782608+00:00",
+      "id": "1657207c-c126-4136-9f37-d97cdf8b57ff",
+      "hash": "0cf3baf72b2d0daaee06b83e01adb49fd98078100c4a04acb1ef5a1e48a51257",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 26,
+      "previous_hash": "b0fa8f250651103b87536aa3281f1fb7a22c0caaec490eca3e7af14b8a0a3741"
+    },
+    {
+      "at": "2026-11-10T06:03:52.814990+00:00",
+      "id": "7e4bb4b1-cb58-4c30-8267-3a0534a2013d",
+      "hash": "d8bab6997876b462388e0c6bd67134a7cb8cc4287ffec5c61a6263f02c2d89a6",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 27,
+      "previous_hash": "0cf3baf72b2d0daaee06b83e01adb49fd98078100c4a04acb1ef5a1e48a51257"
+    },
+    {
+      "at": "2026-11-10T06:03:53.449010+00:00",
+      "id": "b441a276-f2c7-4dbb-80a8-d1c2dfd801c6",
+      "hash": "b510a625df6631d00c72d23a75c23eec645c102c29b63a5a0a2d22937db4b7de",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 28,
+      "previous_hash": "d8bab6997876b462388e0c6bd67134a7cb8cc4287ffec5c61a6263f02c2d89a6"
+    },
+    {
+      "at": "2026-11-10T06:03:54.402728+00:00",
+      "id": "544b2eaa-aa3b-4858-b0f3-49458e6ef621",
+      "hash": "64d354b49e3d4e842084feae73844798fd768c3c606107257e80979c4188ce7e",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 29,
+      "previous_hash": "b510a625df6631d00c72d23a75c23eec645c102c29b63a5a0a2d22937db4b7de"
+    },
+    {
+      "at": "2026-11-10T06:03:55.043748+00:00",
+      "id": "a5bb70d7-cf3f-4cc0-b4d2-59701c59b57b",
+      "hash": "d87d406bca71ade95b301b07e11e2ff2e76699277cf24f234ee5eb0223a381c0",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 30,
+      "previous_hash": "64d354b49e3d4e842084feae73844798fd768c3c606107257e80979c4188ce7e"
+    },
+    {
+      "at": "2026-11-10T06:03:55.978155+00:00",
+      "id": "6db709c6-1853-4500-8418-3e86c9e8ad59",
+      "hash": "d67018c95232f4cfc36f356e8d004fe13a214c385bd8eecc2bef286fa12728d3",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 31,
+      "previous_hash": "d87d406bca71ade95b301b07e11e2ff2e76699277cf24f234ee5eb0223a381c0"
+    },
+    {
+      "at": "2026-11-10T06:03:56.947892+00:00",
+      "id": "9550d4d1-6bcd-4b17-8ffc-cdd5a06575e3",
+      "hash": "98883f87d665bbc7367f925ddefd11710d77407faa4e556b55b36a627153c94f",
+      "kind": "SUBMIT",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "PENDING_SUPPORT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 32,
+      "previous_hash": "d67018c95232f4cfc36f356e8d004fe13a214c385bd8eecc2bef286fa12728d3"
+    },
+    {
+      "at": "2026-11-10T06:03:57.602804+00:00",
+      "id": "2c5937e7-b4d3-4053-9208-6882cda3f164",
+      "hash": "12283533128cf53aeac38a434c5d69ad1bd76171cb10fa772568afe67864a252",
+      "kind": "APPROVE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "PENDING_EXECUTIVE",
+        "before": "PENDING_SUPPORT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 33,
+      "previous_hash": "98883f87d665bbc7367f925ddefd11710d77407faa4e556b55b36a627153c94f"
+    },
+    {
+      "at": "2026-11-10T06:03:58.613832+00:00",
+      "id": "47a3ce0e-6723-4c58-903f-40f6f9efdb15",
+      "hash": "964ba4bbf200d358788d8fc94a13aec69469b595b188c776bfaef0f069f6ee5f",
+      "kind": "TASK_CREATED",
+      "role": "영업임원",
+      "actor": "demo-executive",
+      "target": "ecff2824-1a3d-4a33-b511-e639b4331dae",
+      "details": {
+        "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+        "title": "지급 일정 반영",
+        "department": "재무팀"
+      },
+      "sequence": 34,
+      "previous_hash": "12283533128cf53aeac38a434c5d69ad1bd76171cb10fa772568afe67864a252"
+    },
+    {
+      "at": "2026-11-10T06:03:58.613832+00:00",
+      "id": "a185bd18-cf6b-4bab-9a6f-437100e76fe7",
+      "hash": "f85ed91eb0b3733645fd7fb7ae15c5df020bff020bd98e28de5540fd91edc3a8",
+      "kind": "APPROVE",
+      "role": "영업임원",
+      "actor": "demo-executive",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "APPROVED",
+        "before": "PENDING_EXECUTIVE",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 35,
+      "previous_hash": "964ba4bbf200d358788d8fc94a13aec69469b595b188c776bfaef0f069f6ee5f"
+    },
+    {
+      "at": "2026-11-10T06:03:59.233887+00:00",
+      "id": "cd7ab510-fb8a-47a7-8fa7-792d6440b12f",
+      "hash": "15a2b91c00e2be473069c3283850ad4803e8eb5a4439f16d05f5cb967667c63f",
+      "kind": "SCHEDULE",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "SCHEDULED",
+        "before": "APPROVED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 36,
+      "previous_hash": "f85ed91eb0b3733645fd7fb7ae15c5df020bff020bd98e28de5540fd91edc3a8"
+    },
+    {
+      "at": "2026-11-10T06:03:59.915778+00:00",
+      "id": "40dbe5fa-6b35-4f5d-986c-3b4726cfe1e1",
+      "hash": "ae336fd663bfb4c48f12589ed7bc553df82f2861c397eba03793ab4e7d920e7c",
+      "kind": "TASK_RESOLVED",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "ecff2824-1a3d-4a33-b511-e639b4331dae",
+      "details": {
+        "reason": "합성 승인 결과에 따른 일정 반영 확인"
+      },
+      "sequence": 37,
+      "previous_hash": "15a2b91c00e2be473069c3283850ad4803e8eb5a4439f16d05f5cb967667c63f"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "4d68ab0d-7d16-4977-bb71-54da85ff2f76",
+      "hash": "633db7f2cc9adbd1beb68096dbc767b135534a4ad107b194a4b4c21aaabaa35b",
+      "kind": "SCHEDULE_SUSPENDED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "reason": "합성 관계 분리"
+      },
+      "sequence": 38,
+      "previous_hash": "ae336fd663bfb4c48f12589ed7bc553df82f2861c397eba03793ab4e7d920e7c"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "dab0cbe8-d5b2-459d-9281-5f5df5cb6238",
+      "hash": "f39f8dad203df1a5588e86f758ce735534524801533cc358af762c8f6ccaa188",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "7482d720-b94d-4f33-a47a-7909c15a21fd",
+      "details": {
+        "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+        "title": "변경 영향 소명",
+        "department": "영업팀"
+      },
+      "sequence": 39,
+      "previous_hash": "633db7f2cc9adbd1beb68096dbc767b135534a4ad107b194a4b4c21aaabaa35b"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "ea80586e-8b34-40a9-80d5-c68a7596a3d4",
+      "hash": "19ac3cadcf9c3adc6ec0a1661912f7add7d68dad47cb208da007c2631b29f332",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "a6925174-5c2f-4d38-ab0e-69be7cd3a856",
+      "details": {
+        "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+        "title": "지급 일정 재검토",
+        "department": "재무팀"
+      },
+      "sequence": 40,
+      "previous_hash": "f39f8dad203df1a5588e86f758ce735534524801533cc358af762c8f6ccaa188"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "7e815acf-5de4-4d4f-bdd5-1b78c3fe6bf7",
+      "hash": "c568f3c01a44c64c7fa295f928f7595ca7ccd48c4dc8047560b1ba885ca19838",
+      "kind": "APPROVAL_INVALIDATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "SCHEDULED",
+        "reason": "합성 관계 분리",
+        "revision": 2
+      },
+      "sequence": 41,
+      "previous_hash": "19ac3cadcf9c3adc6ec0a1661912f7add7d68dad47cb208da007c2631b29f332"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "c56703b1-a67a-44b1-b9e3-3550315d1c8c",
+      "hash": "59db5f4c77718603e05e0c996ce474e39c538cd57bb1b3d9e32656235b9802f8",
+      "kind": "CASE_SUPERSEDED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+      "details": {
+        "reason": "관계 합병·분리로 재기안"
+      },
+      "sequence": 42,
+      "previous_hash": "c568f3c01a44c64c7fa295f928f7595ca7ccd48c4dc8047560b1ba885ca19838"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "cae12355-270e-4e53-8bc6-500f51b23704",
+      "hash": "18df908730b97e61590570e6cfe58fc3361f88819ff0461c0b5b26d6aa5102c4",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "items": [
+          "REB-API-C1"
+        ],
+        "context": {
+          "group": [
+            "API-C1"
+          ],
+          "items": [
+            "REB-API-C1"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 900000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 900000,
+          "versions": {
+            "API-C1": 2
+          },
+          "executive": false
+        }
+      },
+      "sequence": 43,
+      "previous_hash": "59db5f4c77718603e05e0c996ce474e39c538cd57bb1b3d9e32656235b9802f8"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "0827e72d-141a-4c6d-9729-8b3f844f7a52",
+      "hash": "58c1d3f8c15574078856e9692b807b27e76b6db1f0a62426b12aaeb47e627e36",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "2b425b36-f4fe-4cfe-be2b-852997680c98",
+      "details": {
+        "items": [
+          "REB-API-C2"
+        ],
+        "context": {
+          "group": [
+            "API-C2"
+          ],
+          "items": [
+            "REB-API-C2"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 800000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 800000,
+          "versions": {
+            "API-C2": 1
+          },
+          "executive": false
+        }
+      },
+      "sequence": 44,
+      "previous_hash": "18df908730b97e61590570e6cfe58fc3361f88819ff0461c0b5b26d6aa5102c4"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "34231287-aeb4-44c6-92e9-ee875aa9b265",
+      "hash": "877403d87be6ef9f13292294fb073d656373f9f22a534e944ff263b4f74c4b23",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "c360effe-64fe-4d8b-a9c8-db9dc7edea41",
+      "details": {
+        "items": [
+          "REB-API-C3"
+        ],
+        "context": {
+          "group": [
+            "API-C3"
+          ],
+          "items": [
+            "REB-API-C3"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 700000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 700000,
+          "versions": {
+            "API-C3": 1
+          },
+          "executive": false
+        }
+      },
+      "sequence": 45,
+      "previous_hash": "58c1d3f8c15574078856e9692b807b27e76b6db1f0a62426b12aaeb47e627e36"
+    },
+    {
+      "at": "2026-11-10T06:04:00.874018+00:00",
+      "id": "f5aaaf19-4a91-4fc4-83af-579d2af4a79e",
+      "hash": "e3a6d03e28b42b2d6582b7d775df383b03970bb74bbed0266de483a96d0c2a9e",
+      "kind": "RELATIONSHIP_CHANGED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "API-C1",
+      "details": {
+        "at": "2026-11-10T06:04:00.874018+00:00",
+        "id": "00601ab4-b2dc-4ba4-810e-41ed5b9c6d6f",
+        "cases": [
+          {
+            "case": "0382bc52-d67a-4c75-aa94-aaa6d73453fc",
+            "action": "승인 무효화·일정 중지",
+            "after_group": [
+              "API-C1"
+            ],
+            "after_amount": 900000,
+            "before_group": [
+              "API-C1",
+              "API-C2",
+              "API-C3"
+            ],
+            "before_amount": 2400000,
+            "after_executive": false,
+            "before_executive": true
+          }
+        ],
+        "agency": "API-C1",
+        "reason": "합성 관계 분리",
+        "after_group": [
+          "API-C1"
+        ],
+        "source_kind": "synthetic",
+        "base_version": 30,
+        "before_group": [
+          "API-C1",
+          "API-C2",
+          "API-C3"
+        ],
+        "rules_version": "w07-2of3-exact-v1"
+      },
+      "sequence": 46,
+      "previous_hash": "877403d87be6ef9f13292294fb073d656373f9f22a534e944ff263b4f74c4b23"
+    },
+    {
+      "at": "2026-11-10T06:04:02.485372+00:00",
+      "id": "155ac7e9-140e-4684-b3d3-0a811c9d9763",
+      "hash": "b84bbe13d7727cfe4308d4db916369eaa1a1fd537a3f413f4f2a11ef0b1b5ea9",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 47,
+      "previous_hash": "e3a6d03e28b42b2d6582b7d775df383b03970bb74bbed0266de483a96d0c2a9e"
+    },
+    {
+      "at": "2026-11-10T06:04:03.459267+00:00",
+      "id": "3028ade2-aa6d-4eaa-a953-06bfa526582d",
+      "hash": "a54b7504f8a3a0bc99d765643bae411d5fdb588b154cf5addc387abf8fe32c40",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 48,
+      "previous_hash": "b84bbe13d7727cfe4308d4db916369eaa1a1fd537a3f413f4f2a11ef0b1b5ea9"
+    },
+    {
+      "at": "2026-11-10T06:04:04.369856+00:00",
+      "id": "5bdb731b-c823-4c06-a994-3b2b5f1a1520",
+      "hash": "0ac32518af005f1917e7eddcc401812705fca1b5589a3e469d4d1df2840a899f",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 49,
+      "previous_hash": "a54b7504f8a3a0bc99d765643bae411d5fdb588b154cf5addc387abf8fe32c40"
+    },
+    {
+      "at": "2026-11-10T06:04:05.338216+00:00",
+      "id": "df1413a1-f364-4976-ae23-d96486bc3dc2",
+      "hash": "0001f0e8763db71019d9c824b18e4f418a3a2d14031c6f78258ae579700c7ca0",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 50,
+      "previous_hash": "0ac32518af005f1917e7eddcc401812705fca1b5589a3e469d4d1df2840a899f"
+    },
+    {
+      "at": "2026-11-10T06:04:06.315117+00:00",
+      "id": "c2f3ea61-e9c7-4946-9e8a-9dbba6aca123",
+      "hash": "50531859cd2951d41149406c54908531d54a8edf18abaf34ab5ea91085e8b19c",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 51,
+      "previous_hash": "0001f0e8763db71019d9c824b18e4f418a3a2d14031c6f78258ae579700c7ca0"
+    },
+    {
+      "at": "2026-11-10T06:04:07.444293+00:00",
+      "id": "9ad69f95-7ed2-4617-a752-51c8888069c9",
+      "hash": "7f14cf26cceaaafd692a00e55f33967bf783cd173919d5e11b46a049d1713262",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "DRAFT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 52,
+      "previous_hash": "50531859cd2951d41149406c54908531d54a8edf18abaf34ab5ea91085e8b19c"
+    },
+    {
+      "at": "2026-11-10T06:04:08.420428+00:00",
+      "id": "1b2932f3-72f4-4456-a259-2978e8369d03",
+      "hash": "905417a56b602a12603812a5558f6b4c811991cf900b87cbde85fe87003c4ccb",
+      "kind": "SUBMIT",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "PENDING_SUPPORT",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 53,
+      "previous_hash": "7f14cf26cceaaafd692a00e55f33967bf783cd173919d5e11b46a049d1713262"
+    },
+    {
+      "at": "2026-11-10T06:04:09.028163+00:00",
+      "id": "df280be7-f55c-4b5a-8369-d2accfd064e3",
+      "hash": "7c997ad927b479b0122da6d8ff4d0b838fef903403971f0420d5cf23fe6b0417",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "0f4f1450-fa4b-4db2-bb4b-a3d92a740baa",
+      "details": {
+        "case": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+        "title": "지급 일정 반영",
+        "department": "재무팀"
+      },
+      "sequence": 54,
+      "previous_hash": "905417a56b602a12603812a5558f6b4c811991cf900b87cbde85fe87003c4ccb"
+    },
+    {
+      "at": "2026-11-10T06:04:09.028163+00:00",
+      "id": "9cd5faf6-0d3d-4856-a945-021968eb0465",
+      "hash": "0c7470b31f60e3d3613f3f9365d8f7740657c2bbcab4be16b5b02513ab8f9d86",
+      "kind": "APPROVE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "APPROVED",
+        "before": "PENDING_SUPPORT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 55,
+      "previous_hash": "7c997ad927b479b0122da6d8ff4d0b838fef903403971f0420d5cf23fe6b0417"
+    },
+    {
+      "at": "2026-11-10T06:04:09.972498+00:00",
+      "id": "c304e198-2e0b-42d9-8b59-c3fa6220e8de",
+      "hash": "075faec3675ceddc8203191f1f458360b588792e783f97d68210faaedad40457",
+      "kind": "SCHEDULE",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "64d9b298-7a24-44d8-a049-77e0b4a1a656",
+      "details": {
+        "after": "SCHEDULED",
+        "before": "APPROVED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 56,
+      "previous_hash": "0c7470b31f60e3d3613f3f9365d8f7740657c2bbcab4be16b5b02513ab8f9d86"
+    },
+    {
+      "at": "2026-11-10T06:04:10.727046+00:00",
+      "id": "901bd00c-ecbc-4a0d-bccc-e9846cc8812a",
+      "hash": "cea19dd9b9f585ee28ec004ff9116f75932282e846a22149d08a508e26e5b040",
+      "kind": "TASK_RESOLVED",
+      "role": "재무팀",
+      "actor": "demo-finance",
+      "target": "0f4f1450-fa4b-4db2-bb4b-a3d92a740baa",
+      "details": {
+        "reason": "합성 승인 결과에 따른 일정 반영 확인"
+      },
+      "sequence": 57,
+      "previous_hash": "075faec3675ceddc8203191f1f458360b588792e783f97d68210faaedad40457"
+    },
+    {
+      "at": "2026-11-10T06:04:11.446751+00:00",
+      "id": "a225f914-5166-4f2a-9cf3-b6aea88f2bca",
+      "hash": "ba4783411f72fbb0d267e562e47e8424d47a012fb7a74171f64d109736fb89cb",
+      "kind": "CASE_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "items": [
+          "REB-API-H1"
+        ],
+        "context": {
+          "group": [
+            "API-H1"
+          ],
+          "items": [
+            "REB-API-H1"
+          ],
+          "rules": "w07-2of3-exact-v1",
+          "amount": 900000,
+          "payout": {},
+          "evidence": [],
+          "exposure": 900000,
+          "versions": {
+            "API-H1": 1
+          },
+          "executive": false
+        }
+      },
+      "sequence": 58,
+      "previous_hash": "cea19dd9b9f585ee28ec004ff9116f75932282e846a22149d08a508e26e5b040"
+    },
+    {
+      "at": "2026-11-10T06:04:12.105818+00:00",
+      "id": "a04ef25b-2166-486f-8c91-915301824711",
+      "hash": "d13e9cab1584d558f9957971222f956ba21ccad8329c09ca0575425f3a9480e2",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "283426b3-96c3-41f0-ad1e-aac5a16e1d2e",
+      "details": {
+        "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+        "title": "필수 증빙 보완",
+        "department": "영업팀"
+      },
+      "sequence": 59,
+      "previous_hash": "ba4783411f72fbb0d267e562e47e8424d47a012fb7a74171f64d109736fb89cb"
+    },
+    {
+      "at": "2026-11-10T06:04:12.105818+00:00",
+      "id": "bda3f957-e718-49ff-b4fc-ca5c3b8fda15",
+      "hash": "e2eb31b0418f40d32f4d28fb7046c0ce2809f331e3256e59121bc26c8539c55b",
+      "kind": "SUBMIT",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "ON_HOLD",
+        "before": "DRAFT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 1
+      },
+      "sequence": 60,
+      "previous_hash": "d13e9cab1584d558f9957971222f956ba21ccad8329c09ca0575425f3a9480e2"
+    },
+    {
+      "at": "2026-11-10T06:04:13.341665+00:00",
+      "id": "af09694f-cef9-4859-bcdc-acf2d9694457",
+      "hash": "0101de6bbfbbf95ea3b213d777750483d6c48074b02420edff0fae1678e0fea4",
+      "kind": "TASK_CREATED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "c94c9846-b40b-4cce-889e-a33d1fb26e2b",
+      "details": {
+        "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+        "title": "변경 영향 소명",
+        "department": "영업팀"
+      },
+      "sequence": 61,
+      "previous_hash": "e2eb31b0418f40d32f4d28fb7046c0ce2809f331e3256e59121bc26c8539c55b"
+    },
+    {
+      "at": "2026-11-10T06:04:13.341665+00:00",
+      "id": "18b574c9-0c18-4129-9458-ad8eb7db4ae7",
+      "hash": "03a80b92a68f645938a837fd3829fc34aa5e4ce193398fbf373dd492f67b66df",
+      "kind": "TASK_CREATED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "2f4c6e84-67e1-48cc-8e22-a95849662b6b",
+      "details": {
+        "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+        "title": "지급 일정 재검토",
+        "department": "재무팀"
+      },
+      "sequence": 62,
+      "previous_hash": "0101de6bbfbbf95ea3b213d777750483d6c48074b02420edff0fae1678e0fea4"
+    },
+    {
+      "at": "2026-11-10T06:04:13.341665+00:00",
+      "id": "75fac281-b419-40ae-9100-2738fb65742b",
+      "hash": "1e0ba13414c161071e575966bc256f3abee7bfae3a8c7e703a16c9b8504ffe38",
+      "kind": "APPROVAL_INVALIDATED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "ON_HOLD",
+        "reason": "증빙 또는 수취계좌 변경",
+        "revision": 2
+      },
+      "sequence": 63,
+      "previous_hash": "03a80b92a68f645938a837fd3829fc34aa5e4ce193398fbf373dd492f67b66df"
+    },
+    {
+      "at": "2026-11-10T06:04:13.341665+00:00",
+      "id": "335b0db9-0618-4b82-8575-092e084f0bce",
+      "hash": "c888216e99c3f6f681216ed8938e0d5019da1c763a343639a92750290a03ec3f",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "ON_HOLD",
+        "reason": "합성 제출 검증 회신",
+        "revision": 2
+      },
+      "sequence": 64,
+      "previous_hash": "1e0ba13414c161071e575966bc256f3abee7bfae3a8c7e703a16c9b8504ffe38"
+    },
+    {
+      "at": "2026-11-10T06:04:14.468503+00:00",
+      "id": "d1820549-c9e1-4ff8-a7d4-f20edd8b3fcf",
+      "hash": "774907a98dc8f485dd633f326e63702167596a28a6981f5084c0a76f420c10ea",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 2
+      },
+      "sequence": 65,
+      "previous_hash": "c888216e99c3f6f681216ed8938e0d5019da1c763a343639a92750290a03ec3f"
+    },
+    {
+      "at": "2026-11-10T06:04:15.564823+00:00",
+      "id": "f68fdd75-ef91-4904-a5d5-56f550430f16",
+      "hash": "d7b99efe2efd900a17bd85d8dd2d3d1a9a35ae673b80298eedf2f383058c1413",
+      "kind": "APPROVAL_INVALIDATED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "증빙 또는 수취계좌 변경",
+        "revision": 3
+      },
+      "sequence": 66,
+      "previous_hash": "774907a98dc8f485dd633f326e63702167596a28a6981f5084c0a76f420c10ea"
+    },
+    {
+      "at": "2026-11-10T06:04:15.564823+00:00",
+      "id": "14f72d4a-d783-489a-956a-0db39ad483b0",
+      "hash": "292a10669c904c78a81e79aa7ddcf7c90976e217bd04743f33f0644923dd2bfb",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 3
+      },
+      "sequence": 67,
+      "previous_hash": "d7b99efe2efd900a17bd85d8dd2d3d1a9a35ae673b80298eedf2f383058c1413"
+    },
+    {
+      "at": "2026-11-10T06:04:16.632689+00:00",
+      "id": "8363d413-3da2-4aed-bd6b-6754ea56298d",
+      "hash": "cdcb485eb5f20bb8434d0e426fa4f4b907a5c2014abe832300567532f4a0ad4c",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 3
+      },
+      "sequence": 68,
+      "previous_hash": "292a10669c904c78a81e79aa7ddcf7c90976e217bd04743f33f0644923dd2bfb"
+    },
+    {
+      "at": "2026-11-10T06:04:17.578479+00:00",
+      "id": "896596c9-d113-4cd4-88e7-03bc91f9bcb5",
+      "hash": "ebeed4f91c8d69edbaaaefd75ba9d61b5b4e3a7510162bd9b78c6e4e50fd67ba",
+      "kind": "APPROVAL_INVALIDATED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "증빙 또는 수취계좌 변경",
+        "revision": 4
+      },
+      "sequence": 69,
+      "previous_hash": "cdcb485eb5f20bb8434d0e426fa4f4b907a5c2014abe832300567532f4a0ad4c"
+    },
+    {
+      "at": "2026-11-10T06:04:17.578479+00:00",
+      "id": "943d052b-c2fb-41ec-b45f-8703f32b3a83",
+      "hash": "8310f452d7c5001b266b88e6c8f156207d88817b48a5dba1ec9c8e6ba58e6693",
+      "kind": "EVIDENCE",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 4
+      },
+      "sequence": 70,
+      "previous_hash": "ebeed4f91c8d69edbaaaefd75ba9d61b5b4e3a7510162bd9b78c6e4e50fd67ba"
+    },
+    {
+      "at": "2026-11-10T06:04:18.730300+00:00",
+      "id": "88dcdeb3-8f4c-4df4-af95-9719d558d080",
+      "hash": "64c74c2819e49d8597402b3bb4304d3675f74f60df2b32636c06e7ab708953fe",
+      "kind": "VERIFY_EVIDENCE",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REASSESSMENT_REQUIRED",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 4
+      },
+      "sequence": 71,
+      "previous_hash": "8310f452d7c5001b266b88e6c8f156207d88817b48a5dba1ec9c8e6ba58e6693"
+    },
+    {
+      "at": "2026-11-10T06:04:19.693681+00:00",
+      "id": "b3c2c320-bbec-483f-9b92-ed27dfb38df4",
+      "hash": "b19aa54fc41cd9d93279892e152df99c36f6625594c06c2079d2c6013958ba2f",
+      "kind": "TASK_RESOLVED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "283426b3-96c3-41f0-ad1e-aac5a16e1d2e",
+      "details": {
+        "reason": "합성 증빙 회신 검토 완료"
+      },
+      "sequence": 72,
+      "previous_hash": "64c74c2819e49d8597402b3bb4304d3675f74f60df2b32636c06e7ab708953fe"
+    },
+    {
+      "at": "2026-11-10T06:04:20.000316+00:00",
+      "id": "8159f263-7327-49ff-a8b4-0f83be3afaa0",
+      "hash": "28e2f429a4585b96ea9b7a1f4dc4544943545d9fee2519f406a3b28502fa7d93",
+      "kind": "TASK_RESOLVED",
+      "role": "영업팀",
+      "actor": "demo-sales",
+      "target": "c94c9846-b40b-4cce-889e-a33d1fb26e2b",
+      "details": {
+        "reason": "합성 증빙 회신 검토 완료"
+      },
+      "sequence": 73,
+      "previous_hash": "b19aa54fc41cd9d93279892e152df99c36f6625594c06c2079d2c6013958ba2f"
+    },
+    {
+      "at": "2026-11-10T06:04:20.698338+00:00",
+      "id": "4d95acc5-8024-47e7-9a52-3fcb3eb3e1ea",
+      "hash": "b01d2372baf8e7421066561e3b2e9569a27afe6eb0d10f3f0000424fb42f7013",
+      "kind": "RESUBMIT",
+      "role": "영업지원팀",
+      "actor": "demo-draft",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "PENDING_SUPPORT",
+        "before": "REASSESSMENT_REQUIRED",
+        "reason": "합성 제출 검증 회신",
+        "revision": 4
+      },
+      "sequence": 74,
+      "previous_hash": "28e2f429a4585b96ea9b7a1f4dc4544943545d9fee2519f406a3b28502fa7d93"
+    },
+    {
+      "at": "2026-11-10T06:04:21.336721+00:00",
+      "id": "3b42906f-a6ad-440b-87e1-51c9aade0d95",
+      "hash": "6761977d9ff8630efa5b0b20226d0f202c6853ac5240d779e3ab7aadf965a9e6",
+      "kind": "TASK_CREATED",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "6fc92bda-2125-430d-a3d0-f86357a2be74",
+      "details": {
+        "case": "e6172332-7844-463c-a1e6-ed49e6f89769",
+        "title": "거절 사유 보완",
+        "department": "영업팀"
+      },
+      "sequence": 75,
+      "previous_hash": "b01d2372baf8e7421066561e3b2e9569a27afe6eb0d10f3f0000424fb42f7013"
+    },
+    {
+      "at": "2026-11-10T06:04:21.336721+00:00",
+      "id": "c46d0ba8-07c9-4eae-a4ac-e720b4587974",
+      "hash": "b6cc73569548bd789b95b8314777526430f41c54dc7926f824880e1dba608f10",
+      "kind": "REJECT",
+      "role": "영업지원팀",
+      "actor": "demo-support",
+      "target": "e6172332-7844-463c-a1e6-ed49e6f89769",
+      "details": {
+        "after": "REJECTED",
+        "before": "PENDING_SUPPORT",
+        "reason": "합성 제출 검증 회신",
+        "revision": 4
+      },
+      "sequence": 76,
+      "previous_hash": "6761977d9ff8630efa5b0b20226d0f202c6853ac5240d779e3ab7aadf965a9e6"
+    }
+  ],
+  "db_counts": {
+    "nx_audit": 76,
+    "nx_payment_items": 1
+  },
+  "traffic": [
+    {
+      "at": "2026-11-10T06:03:36.660695+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:37.023717+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/analysis",
+      "actor": "demo-draft",
+      "status": 503
+    },
+    {
+      "at": "2026-11-10T06:03:37.342243+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:37.632764+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:37.959973+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:38.276998+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:38.569804+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:38.854213+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:39.154583+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:39.454498+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:39.781992+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:40.088781+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:40.377049+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:40.709715+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:41.020799+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:41.349930+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:41.679253+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:41.974326+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:42.286294+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:42.600444+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:42.912320+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:43.224218+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:43.550103+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:43.864271+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:44.147377+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:44.436905+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:44.759127+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:45.103402+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:45.416171+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:45.728779+00:00",
+      "method": "POST",
+      "path": "/api/engine/tasks/c557b078-927c-409d-9c47-02a1eb7ea20c/resolve",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:46.033677+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:46.345713+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:46.652820+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/8e331c03-a420-4df2-9dd0-ab064e6b39fb/actions",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:46.971405+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:47.270305+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:47.583978+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:47.882145+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:48.185657+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:48.581281+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:48.912153+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:49.231402+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:49.592022+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:49.898418+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:50.213673+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:50.525819+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:50.843136+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:51.152938+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:51.462987+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:51.790484+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:52.190812+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:52.516799+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:52.830385+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:53.141400+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:53.462635+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:53.760543+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:54.083863+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:54.408943+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:54.731758+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:55.048673+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:55.372868+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:55.666955+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:55.982577+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:56.301210+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:56.660770+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:56.953897+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:57.252348+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:57.608327+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:57.932589+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:58.258773+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:58.619470+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-executive",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:58.925906+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:59.239883+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/0382bc52-d67a-4c75-aa94-aaa6d73453fc/actions",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:59.552130+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:03:59.930992+00:00",
+      "method": "POST",
+      "path": "/api/engine/tasks/ecff2824-1a3d-4a33-b511-e639b4331dae/resolve",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:00.268829+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:00.542113+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:00.882052+00:00",
+      "method": "POST",
+      "path": "/api/engine/relationships/change",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:01.212590+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:01.507935+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:01.856936+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:02.189810+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:02.490531+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:02.809287+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:03.141385+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:03.465541+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:03.768314+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:04.069818+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:04.384169+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:04.704070+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:05.037476+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:05.343455+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:05.658972+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:05.987066+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:06.321116+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:06.673611+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:07.038052+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:07.108210+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:07.450789+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:07.801869+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:08.111775+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:08.434728+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:08.734453+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:09.042867+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:09.363750+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:09.669673+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:09.978244+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/64d9b298-7a24-44d8-a049-77e0b4a1a656/actions",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:10.295790+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:10.734563+00:00",
+      "method": "POST",
+      "path": "/api/engine/tasks/0f4f1450-fa4b-4db2-bb4b-a3d92a740baa/resolve",
+      "actor": "demo-finance",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:11.092294+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:11.452749+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:11.773447+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:12.111843+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:12.394770+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:12.749959+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:13.061396+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:13.358574+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:13.677565+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:14.064646+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:14.484508+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:14.827176+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:15.157524+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:15.571875+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:15.937306+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:16.272708+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:16.639717+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:16.964514+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:17.306329+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:17.584348+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:17.912024+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:18.275129+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:18.736813+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:19.053348+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:19.376803+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:19.699918+00:00",
+      "method": "POST",
+      "path": "/api/engine/tasks/283426b3-96c3-41f0-ad1e-aac5a16e1d2e/resolve",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:20.007953+00:00",
+      "method": "POST",
+      "path": "/api/engine/tasks/c94c9846-b40b-4cce-889e-a33d1fb26e2b/resolve",
+      "actor": "demo-sales",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:20.317087+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:20.705187+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:21.032263+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:21.352810+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases/e6172332-7844-463c-a1e6-ed49e6f89769/actions",
+      "actor": "demo-support",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:21.674683+00:00",
+      "method": "GET",
+      "path": "/api/engine/workspace",
+      "actor": "demo-draft",
+      "status": 200
+    },
+    {
+      "at": "2026-11-10T06:04:24.816914+00:00",
+      "method": "POST",
+      "path": "/api/engine/cases",
+      "actor": "demo-draft",
+      "status": 403
+    }
+  ]
+}

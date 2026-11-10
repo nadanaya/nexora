@@ -338,6 +338,22 @@
         }
       }
     },
+    "/api/v1/analysis/configuration": {
+      "get": {
+        "summary": "Analysis Configuration",
+        "operationId": "analysis_configuration_api_v1_analysis_configuration_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/cases/{id}/analysis": {
       "post": {
         "summary": "Analysis",

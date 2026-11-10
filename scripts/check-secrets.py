@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 
 root=Path(__file__).resolve().parents[1]
-def git(*args):return subprocess.check_output(['git',*args],cwd=root).decode('utf-8')
+def git(*args):return subprocess.check_output(['git',*args],cwd=root).decode('utf-8',errors='replace')
 staged=git('diff','--cached','--name-only','--diff-filter=ACMR').splitlines()
 tracked=git('ls-files').splitlines()
 forbidden=lambda p:any(part in ['.claude','.codex','.agents','.axhub','__pycache__'] for part in Path(p).parts) or (Path(p).name.startswith('.env') and Path(p).name!='.env.example') or p.endswith('.pyc')

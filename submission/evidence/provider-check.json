@@ -1,0 +1,13 @@
+{
+  "checked_date": "2026-11-10",
+  "local_AI_variable_names": [],
+  "app_AI_variable_names": [],
+  "tenant_AI_available": false,
+  "actual_external_call": "not_executed_missing_credentials",
+  "required_server_variables": [
+    "LLM_API_KEY",
+    "LLM_BASE_URL",
+    "LLM_MODEL"
+  ],
+  "secret_values_recorded": false
+}
