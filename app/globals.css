@@ -6,6 +6,7 @@
 .nx-stat-link { height: auto; width: 100%; padding: 0; text-align: left; white-space: normal; justify-content: stretch; }
 .nx-stat-link > * { width: 100%; height: 100%; }
 .nx-stat-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.nx-case-link { height: auto; min-height: 2.5rem; width: 100%; white-space: normal; overflow-wrap: anywhere; justify-content: flex-start; text-align: left; padding: .65rem .75rem; }
 
 .corevia-context { overflow: clip; border-radius: .25rem; }
 /* design-token-allow: reference-led Corevia brand palette; operational status tokens stay unchanged. */
