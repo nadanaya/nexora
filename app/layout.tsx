@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/Providers";
+import { NoriPet } from "@/components/NoriPet";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -29,7 +30,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="nori-page">{children}</div>
+          <NoriPet />
+        </Providers>
       </body>
     </html>
   );

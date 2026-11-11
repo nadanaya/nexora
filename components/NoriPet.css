@@ -1,0 +1,105 @@
+.nori-page {
+  padding-inline-end: calc(4.75rem + env(safe-area-inset-right));
+}
+
+.nori-dock {
+  position: fixed;
+  inset-inline-end: calc(.5rem + env(safe-area-inset-right));
+  inset-block-end: calc(.75rem + env(safe-area-inset-bottom));
+  z-index: 30;
+}
+
+.nori-launcher {
+  display: grid;
+  place-items: center;
+  gap: .1rem;
+  width: 3.75rem;
+  height: auto;
+  min-height: 3rem;
+  min-width: 0;
+  padding: .2rem;
+  border-radius: 1rem;
+  font-size: .75rem;
+}
+
+.nori-panel {
+  position: fixed;
+  inset: auto calc(.75rem + env(safe-area-inset-right)) calc(5.75rem + env(safe-area-inset-bottom)) auto;
+  margin: 0;
+  width: min(22rem, calc(100vw - 1.5rem - env(safe-area-inset-right)));
+  max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom));
+  overflow: auto;
+  box-shadow: 0 1rem 3rem rgb(14 43 87 / .24);
+}
+
+.nori-panel::backdrop { background: rgb(14 28 56 / .22); }
+.nori-panel-content { display: grid; gap: .85rem; padding: 1rem; }
+.nori-links { display: grid; gap: .3rem; }
+.nori-link { display: flex; align-items: center; gap: .65rem; min-height: 2.75rem; padding: .5rem .65rem; border-radius: .6rem; }
+.nori-link:hover, .nori-link[aria-current='page'] { background: var(--surface, rgb(126 153 200 / .12)); }
+.nori-link:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+
+.nori-arrival, .nori-greeting { display: block; flex: none; }
+.nori-arrival { animation: nori-hop .46s ease-out both; }
+.nori-panel[open] .nori-greeting { animation: nori-hop .55s ease-out both; }
+.nori-greeting { font-size: 1.2rem; }
+
+.nori-cat {
+  position: relative;
+  display: block;
+  width: 3.1em;
+  height: 3em;
+  transform-origin: 50% 95%;
+  animation: nori-breathe 3.5s ease-in-out infinite;
+}
+
+.nori-cat > span, .nori-cat span > span { position: absolute; display: block; }
+.nori-head {
+  inset: 24% 10% 22% 10%;
+  border-radius: 47% 47% 40% 40%;
+  background: radial-gradient(ellipse at 34% 16%, #fff 30%, #dce8ff 76%, #8faee3); /* design-token-allow: fixed character artwork palette */
+  box-shadow: inset 0 -2px 4px rgb(42 80 147 / .3), 0 2px 4px rgb(36 68 125 / .28);
+}
+
+.nori-ear {
+  z-index: -1;
+  top: -33%;
+  width: 39%;
+  height: 71%;
+  border-radius: 19% 68% 30% 55%;
+  background: linear-gradient(145deg, #f7faff 15%, #aec7f8 88%); /* design-token-allow: fixed character artwork palette */
+}
+.nori-ear::after { content: ''; position: absolute; inset: 15% 17% 16% 13%; border-radius: inherit; background: linear-gradient(130deg, #2957b6, #7fb8ff); /* design-token-allow: fixed character artwork palette */ }
+.nori-ear-left { left: 0; transform: rotate(-13deg); }
+.nori-ear-right { right: 0; transform: scaleX(-1) rotate(-13deg); }
+.nori-headset { inset: 29% -9% 17%; border-radius: 44%; background: linear-gradient(115deg, #59c9ff, #174cae 34%, #1c4fae 72%, #5bd7ff); /* design-token-allow: fixed character artwork palette */ }
+.nori-face { inset: 17% 6% 14%; border-radius: 47% 47% 34% 34%; background: linear-gradient(155deg, #274273, #101a35 78%); /* design-token-allow: fixed character artwork palette */ }
+.nori-eyes { inset: 40% 15% auto; height: 29%; animation: nori-blink 5.4s ease-in-out infinite; }
+.nori-eyes::before, .nori-eyes::after { content: ''; position: absolute; top: 0; width: 35%; height: 100%; border: .11em solid #d7f6ff; border-bottom: 0; border-radius: 100% 100% 0 0; /* design-token-allow: fixed character artwork palette */ }
+.nori-eyes::before { left: 0; }
+.nori-eyes::after { right: 0; }
+.nori-body { inset: 62% 22% 1%; border-radius: 44% 44% 34% 34%; background: linear-gradient(115deg, #b4cafa, #fff 49%, #a8bfe8); /* design-token-allow: fixed character artwork palette */ }
+.nori-bib { inset: 15% 12% 40%; clip-path: polygon(0 0, 100% 0, 50% 100%); background: linear-gradient(120deg, #58bbff, #1d54bd 70%); /* design-token-allow: fixed character artwork palette */ }
+.nori-feet { inset: 81% 11% -3%; border-radius: 60%; background: radial-gradient(ellipse at 21% 60%, #305ca1 20%, transparent 22%), radial-gradient(ellipse at 79% 60%, #305ca1 20%, transparent 22%); /* design-token-allow: fixed character artwork palette */ }
+.nori-tail { inset: 57% 64% 10% 1%; border-radius: 0 0 20% 87%; border: .35em solid #4a8bdf; border-block-start: 0; border-inline-end: 0; transform-origin: 100% 95%; animation: nori-tail 2.8s ease-in-out infinite; /* design-token-allow: fixed character artwork palette */ }
+.nori-tail::before { content: ''; position: absolute; inset: -.2em auto auto -.35em; width: .35em; height: .5em; border-radius: 50%; background: #6dc9ff; /* design-token-allow: fixed character artwork palette */ }
+
+@media (hover: hover) {
+  .nori-launcher:hover .nori-cat { animation: nori-tilt .46s ease both; }
+}
+@keyframes nori-breathe { 50% { transform: scale(1.035, .965); } }
+@keyframes nori-blink { 0%, 43%, 48%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.12); } }
+@keyframes nori-tail { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(14deg); } }
+@keyframes nori-hop { 0%, 100% { transform: translateY(0); } 42% { transform: translateY(-.48rem) rotate(-6deg); } 75% { transform: translateY(0) scale(1.05, .93); } }
+@keyframes nori-tilt { 45% { transform: translateY(-.12rem) rotate(8deg); } }
+
+@media (max-width: 40rem) {
+  .nori-page { padding-inline-end: calc(3.25rem + env(safe-area-inset-right)); }
+  .nori-dock { inset-inline-end: calc(.25rem + env(safe-area-inset-right)); }
+  .nori-launcher { width: 2.75rem; font-size: .65rem; }
+  .nori-panel { inset-block-end: calc(4.75rem + env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nori-dock *, .nori-dock *::before, .nori-dock *::after { animation: none !important; transition: none !important; }
+}
