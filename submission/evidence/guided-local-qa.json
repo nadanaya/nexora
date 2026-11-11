@@ -1,0 +1,14 @@
+{
+  "source_kind": "actual_browser_and_http_verification",
+  "data_kind": "synthetic",
+  "browser_b": {"completed_steps":8,"total_steps":8,"final_state":"APPROVED","before_krw":1200000,"after_krw":2300000,"executive_required_changed":true},
+  "http_scenarios": ["A","B","C"],
+  "operating_workspace_unchanged": true,
+  "responsive_viewports": [
+    {"width":1440,"document_width":1425},
+    {"width":768,"document_width":753},
+    {"width":390,"document_width":375}
+  ],
+  "physical_mobile_device_tested": false,
+  "external_llm_called": false
+}

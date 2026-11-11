@@ -16,7 +16,7 @@ import networkx as nx
 
 LIMIT = 2_000_000
 RULES = 'w07-2of3-exact-v1'
-ROLES = ['영업지원팀', '영업임원', '영업팀', '재무팀', '조회전용']
+ROLES = ['영업지원팀', '영업임원', '영업팀', '재무팀', '내부감시팀', '조회전용']
 FIELDS = ['representative_name', 'address', 'bank_account_no']
 
 
@@ -147,7 +147,7 @@ def task(s,actor,case,department,title,reason):
             existing['updated_at']=now()
             event(s,actor,'TASK_UPDATED',existing['id'],dict(reason=reason))
         return existing
-    t = dict(id=str(uuid4()),case=case,department=department,title=title,reason=reason,state='OPEN', created_at=now())
+    t = dict(id=str(uuid4()),case=case,department=department,assignee_role=department,title=title,reason=reason,state='OPEN', created_at=now(),due_date=None,result=None)
     s['tasks'][t['id']]=t
     event(s,actor,'TASK_CREATED',t['id'],dict(case=case,department=department,title=title))
     return t
@@ -185,6 +185,7 @@ def blockers(s,c):
 def invalidate(s,actor,c,reason):
     if c['state']=='SIMULATED_PAID':
         task(s,actor,c['id'],'재무팀','지급 후 변경 검토',reason)
+        task(s,actor,c['id'],'내부감시팀','기지급 관계 변경 조사',reason)
         return
     before=c['state']
     c['revision']+=1
@@ -197,6 +198,7 @@ def invalidate(s,actor,c,reason):
         event(s,actor,'SCHEDULE_SUSPENDED',c['id'],dict(reason=reason))
     task(s,actor,c['id'],'영업팀','변경 영향 소명',reason)
     task(s,actor,c['id'],'재무팀','지급 일정 재검토',reason)
+    task(s,actor,c['id'],'내부감시팀','변경된 관계와 승인 근거 검토',reason)
     event(s,actor,'APPROVAL_INVALIDATED',c['id'],dict(before=before,after=c['state'],reason=reason,revision=c['revision']))
 
 
@@ -317,6 +319,10 @@ def operate(s,actor,id,body,key):
         s['payments'][idem]=p
         c['state']='SIMULATED_PAID'
         c['schedule']['state']='SIMULATED_PAID'
+        for t in s['tasks'].values():
+            if t['case']==id and t['department']=='재무팀' and t['title']=='지급 일정 반영' and t['state']=='OPEN':
+                t.update(state='DONE',result='모의 지급 완료 · '+p['receipt_id'],resolution='모의 지급 결과 확인',resolved_by=actor['id'],resolved_at=now())
+                event(s,actor,'TASK_RESOLVED',t['id'],dict(receipt_id=p['receipt_id'],mode='simulation'))
         event(s,actor,'SIMULATED_PAYMENT',id,p)
         return p
     else:
@@ -339,9 +345,38 @@ def change_preview(s,agency,patch,key):
             old,new=context(s,c),context(after,c)
             impacts.append(dict(case=c['id'],before_group=old['group'],after_group=new['group'],
                 before_amount=old['exposure'],after_amount=new['exposure'],before_executive=old['executive'],
-                after_executive=new['executive'],action='사후 검토' if c['state']=='SIMULATED_PAID' else '승인 무효화·일정 중지'))
+                after_executive=new['executive'],before_state=c['state'],action='사후 검토' if c['state']=='SIMULATED_PAID' else '승인 무효화·일정 중지'))
     return after,dict(agency=agency,base_version=s['version'],before_group=members(s,agency),after_group=members(after,agency),
                       cases=impacts,source_kind='assumption',rules_version=RULES)
+
+
+def apply_change(s,actor,agency,patch,key,reason,source_kind,effective_at='2026-07-01'):
+    require(actor['role']=='영업지원팀','FORBIDDEN','영업지원팀이 관계 정보를 정정합니다.',403)
+    after,impact=change_preview(s,agency,patch,key)
+    s['agencies']=after['agencies']
+    s['agencies'][agency].update(source_kind=source_kind,effective_at=effective_at)
+    s['graph_revision']+=1
+    impact.update(id=str(uuid4()),reason=reason,at=now(),source_kind=source_kind,replacement_cases=[])
+    rebuild=[]
+    for item in impact['cases']:
+        case=s['cases'][item['case']]
+        if case['state']=='SUPERSEDED':continue
+        was_paid=case['state']=='SIMULATED_PAID'
+        invalidate(s,actor,case,reason)
+        if not was_paid and item['before_group']!=item['after_group']:
+            case['state']='SUPERSEDED'
+            rebuild.append(case)
+            event(s,actor,'CASE_SUPERSEDED',case['id'],dict(reason='관계 합병·분리로 재기안'))
+        item['after_state']=case['state']
+    for case in rebuild:
+        for aid in sorted({s['rebates'][i]['agency'] for i in case['items']}):
+            candidates=[x['id'] for x in s['rebates'].values() if x['agency'] in members(s,aid) and x['month']==case['month'] and x['original_status']=='미지급' and not x['historical_paid']]
+            reserved={i for c in s['cases'].values() if c['state']!='SUPERSEDED' for i in c['items']}
+            if candidates and not reserved.intersection(candidates):
+                impact['replacement_cases'].append(create_case(s,actor,aid,case['month'])['id'])
+    s['impacts'][impact['id']]=impact
+    event(s,actor,'RELATIONSHIP_CHANGED',agency,impact)
+    return impact
 
 
 def public_state(s,actor):

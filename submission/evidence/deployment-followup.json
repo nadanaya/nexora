@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-11-10T13:39:47Z",
+  "tenant": "lounge",
+  "app_id": "8580d873-165a-4f13-ba8e-ffc68368a229",
+  "commit_sha": "df2f1f4c07aabd190cf0833737b76ed26bda8145",
+  "deployment_id": "2d95ca3d-28f8-41dc-a69d-44303f0ef072",
+  "source": "axhub deploy verify scoped exact deployment",
+  "status": "succeeded",
+  "terminal": true,
+  "success": true,
+  "environment": "production",
+  "production_live": true,
+  "url_checked_by_cli": false,
+  "separate_https_head": {"url":"https://nexora-n28m.axhub.app","status":200,"date":"Tue, 10 Nov 2026 13:39:45 GMT","exit_code":0},
+  "actual_external_ai": "blocked_missing_credentials",
+  "compose_runtime": "not_tested_docker_unavailable"
+}

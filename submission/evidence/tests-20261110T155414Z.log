@@ -1,0 +1,33 @@
+.................F................s                                      [100%]
+================================== FAILURES ===================================
+_________ test_guided_scenarios_isolated_and_persisted[B-8-APPROVED] __________
+
+client = (<starlette.testclient.TestClient object at 0x000002027AC34DD0>, 'test-2de604d8-11da-449e-a01e-7311774f05c9')
+scenario = 'B', length = 8, expected = 'APPROVED'
+
+    @pytest.mark.parametrize('scenario,length,expected',[('A',6,'SIMULATED_PAID'),('B',8,'APPROVED'),('C',6,'REJECTED')])
+    def test_guided_scenarios_isolated_and_persisted(client,scenario,length,expected):
+        c,tenant=client
+        with transaction(tenant) as s:before=D.digest(s)
+        response=request(c,tenant,'/api/v1/demo/start',dict(scenario=scenario))
+        assert response.status_code==200
+        run=response.json()['run_id']
+        for step in range(length):
+            r=request(c,tenant,f'/api/v1/demo/{run}/step',dict(expected_step=step))
+>           assert r.status_code==200,r.text
+E           AssertionError: {"error":"해당 승인 권한과 별도 승인자가 필요합니다.","code":"FORBIDDEN"}
+E           assert 403 == 200
+E            +  where 403 = <Response [403 Forbidden]>.status_code
+
+backend\tests\test_guided_demo.py:17: AssertionError
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\yeoh0\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\yeoh0\삼일\nexora\submission\evidence\tests-20261110T155414Z.xml -
+=========================== short test summary info ===========================
+SKIPPED [1] backend\tests\test_submission.py:141: BLOCKED: external AI credentials are absent; mock tests are not external AI evidence
+FAILED backend/tests/test_guided_demo.py::test_guided_scenarios_isolated_and_persisted[B-8-APPROVED]
+1 failed, 33 passed, 1 skipped, 1 warning in 25.54s

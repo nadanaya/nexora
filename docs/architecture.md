@@ -5,6 +5,7 @@ React19·TypeScript·Tailwind4 / Next16 → 동일 출처 Next 프록시 → loo
 backend/main.py: API·Pydantic 입력·권한. backend/domain.py: 관계·규칙·상태 머신·작업·감사. backend/analysis.py: 구조화 AI 어댑터. backend/store.py: 저장소·트랜잭션. backend/migrations/001_engine.sql: 재실행 가능한 스키마. backend/tests: 단위·실제 PostgreSQL 통합 검사. 요청한 api/schemas/models/services 등 각각의 폴더는 아직 없다.
 
 ## 실제 스키마
+Guided Demo는 기존 세 테이블을 그대로 사용하되 실제 테넌트+로그인 사용자 해시+실행 UUID로 별도 저장 키를 도출한다. backend/guided_demo.py의 서버 정의 시나리오만 실행한다. 소유자 분리와 expected_step 검사를 거치며 운영 역할 변경·운영 심사 호출로 연결되지 않는다. 새 시작은 별도 실행을 만들며 예전 감사 행을 삭제하지 않는다. 이것은 애플리케이션 레벨 격리이며 별도의 물리 DB 또는 RLS 구현으로 주장하지 않는다.
 nx_state: tenant PK, version bigint, payload jsonb, updated_at timestamptz. payload에 agencies/rebates/deposits/cases/tasks/payments/members/impacts/events/files/graph_revision 저장.
 nx_audit: tenant FK, sequence bigint, event_id uuid, event jsonb. PK(tenant,sequence), UNIQUE(tenant,event_id). UPDATE·DELETE 금지 트리거.
 nx_payment_items: tenant FK, rebate_id text, receipt_id text, PK(tenant,rebate_id). 원본 항목의 성공 지급 중복 차단.

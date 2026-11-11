@@ -14,6 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from . import domain as D
 from . import analysis as AI
 from .store import migrate, transaction, connection
+from .guided_demo import register as register_demo
 
 
 @asynccontextmanager
@@ -73,6 +74,9 @@ def actor_in(s,identity):
 
 class Input(BaseModel):
     model_config=ConfigDict(extra='forbid')
+
+
+register_demo(app,identity)
 
 
 class Files(Input):
@@ -175,27 +179,7 @@ def change(body:Change,identity=Depends(identity)):
         D.require(body.base_version==s['version'],'STALE_PREVIEW','데이터가 변경됐습니다. 다시 미리보기하세요.')
         after,impact=D.change_preview(s,body.agency,body.patch,os.environ['NEXORA_MATCH_KEY'])
         if body.apply:
-            s['agencies']=after['agencies']
-            s['agencies'][body.agency].update(source_kind=body.source_kind,effective_at=body.effective_at)
-            s['graph_revision']+=1
-            impact.update(id=str(uuid4()),reason=body.reason,at=D.now(),source_kind=body.source_kind)
-            s['impacts'][impact['id']]=impact
-            rebuild=[]
-            for item in impact['cases']:
-                case=s['cases'][item['case']]
-                if case['state']=='SUPERSEDED':continue
-                was_paid=case['state']=='SIMULATED_PAID'
-                D.invalidate(s,actor,case,body.reason)
-                if not was_paid and item['before_group']!=item['after_group']:
-                    case['state']='SUPERSEDED'
-                    rebuild.append(case)
-                    D.event(s,actor,'CASE_SUPERSEDED',case['id'],dict(reason='관계 합병·분리로 재기안'))
-            for case in rebuild:
-                for agency in sorted({s['rebates'][i]['agency'] for i in case['items']}):
-                    candidates=[x['id'] for x in s['rebates'].values() if x['agency'] in D.members(s,agency) and x['month']==case['month'] and x['original_status']=='미지급' and not x['historical_paid']]
-                    reserved={i for c in s['cases'].values() if c['state']!='SUPERSEDED' for i in c['items']}
-                    if candidates and not reserved.intersection(candidates):D.create_case(s,actor,agency,case['month'])
-            D.event(s,actor,'RELATIONSHIP_CHANGED',body.agency,impact)
+            impact=D.apply_change(s,actor,body.agency,body.patch,os.environ['NEXORA_MATCH_KEY'],body.reason,body.source_kind,body.effective_at)
         return impact
 
 
@@ -239,11 +223,11 @@ def resolve(id:str,body:Resolution,identity=Depends(identity)):
         D.require(t is not None,'NOT_FOUND','작업이 없습니다.',404)
         D.require(actor['role']==t['department'],'FORBIDDEN','담당 부서만 작업을 완료합니다.',403)
         D.require(t['state']=='OPEN','INVALID_STATE','이미 완료한 작업입니다.')
-        if t['case'] in s['cases']:
+        if t['case'] in s['cases'] and t['department']!='내부감시팀':
             c=s['cases'][t['case']]
             D.require(not D.blockers(s,c) if t['department']=='영업팀' else bool(c.get('schedule') and c['schedule']['state'] in ['SCHEDULED','SIMULATED_PAID']),
                       'TASK_BLOCKED','증빙 검토 또는 일정 반영을 먼저 완료하세요.')
-        t.update(state='DONE',resolution=body.reason,resolved_by=actor['id'])
+        t.update(state='DONE',resolution=body.reason,result=body.reason,resolved_by=actor['id'],resolved_at=D.now())
         D.event(s,actor,'TASK_RESOLVED',id,dict(reason=body.reason))
         return t
 
@@ -252,6 +236,18 @@ def resolve(id:str,body:Resolution,identity=Depends(identity)):
 def analysis_configuration(identity=Depends(identity)):
     with transaction(identity['tenant']) as s:actor_in(s,identity)
     return AI.configuration()
+
+
+@app.post('/api/v1/cases/{id}/explanation')
+def explanation(id:str,identity=Depends(identity)):
+    with transaction(identity['tenant'],True) as s:
+        actor=actor_in(s,identity)
+        D.require(id in s['cases'],'NOT_FOUND','심사가 없습니다.',404)
+        c=s['cases'][id]
+        result=AI.explain(AI.prepare(s,c))
+        c['analysis']=dict(output=result,model='deterministic-rules',mode='deterministic',revision=c['revision'],stale=False)
+        D.event(s,actor,'RULE_EXPLANATION_CREATED',id,dict(revision=c['revision'],mode='deterministic'))
+        return c['analysis']
 
 
 @app.post('/api/v1/cases/{id}/analysis')

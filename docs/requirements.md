@@ -13,7 +13,7 @@
 ## 프롬프트와 현재 구현의 차이
 공식 승인 권한을 예시 역할보다 우선했다. 상태는 PENDING_SUPPORT·PENDING_EXECUTIVE·SIMULATED_PAID 등 실제 API 이름을 사용한다. UI는 기존 HeroUI·Phosphor 및 자체 SVG이며 TanStack Query·React Flow·Recharts·Lucide 미사용. DB는 psycopg·SQL 마이그레이션이며 SQLAlchemy·Alembic 미사용. 계층 역할은 구현돼 있으나 요청한 개별 디렉터리 구조로 분리되지 않았다.
 정규화는 NFC·앞뒤 공백 제거만 지원한다. 대소문자·내부 공백·계좌 구두점 통합은 현재 미지원이며 원본 매칭 기준 변경 없이 추가 설계 대상으로 둔다.
-AI는 기존 상세 필드를 유지하며 evidence·risk_level·missing_information·recommended_action·affected_departments·assumptions 필드를 추가했다. Pydantic으로 필수 필드와 위험 수준을 검증하고 evidence의 근거 키도 검사한다. 외부 모델 호출은 자격 증명 부재로 미검증.
+AI는 기존 상세 필드를 유지하며 evidence·risk_level·missing_information·recommended_action·decision_context·recommendation·alternatives·affected_departments·assumptions 필드를 제공한다. Pydantic으로 필수 필드와 위험 수준을 검증하고 evidence의 근거 키도 검사한다. 외부 모델 호출은 자격 증명 부재로 미검증이며 별도 규칙 기반 설명 API를 제공한다.
 AGENTS.md는 이미 존재하며 보호 지시에 따라 변경하지 않았다. 실제 제출 화면 문항·글자 수는 로그인된 제출 화면에서 미확인이다. A04 문항 기반 초안과 사용자 요청의 1,000자 제한을 적용한다.
 
 ## 수용 결과

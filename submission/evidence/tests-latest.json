@@ -1,5 +1,5 @@
 {
-  "at": "20261110T132306Z",
+  "at": "20261111T032047Z",
   "exit_code": 0,
   "source_kind": "test_execution",
   "environment": "isolated_postgresql",
@@ -69,6 +69,34 @@
       "status": "passed"
     },
     {
+      "name": "test_guided_scenarios_isolated_and_persisted[A-6-SIMULATED_PAID]",
+      "status": "passed"
+    },
+    {
+      "name": "test_guided_scenarios_isolated_and_persisted[B-8-APPROVED]",
+      "status": "passed"
+    },
+    {
+      "name": "test_guided_scenarios_isolated_and_persisted[C-6-REJECTED]",
+      "status": "passed"
+    },
+    {
+      "name": "test_demo_reset_creates_new_run_preserves_old",
+      "status": "passed"
+    },
+    {
+      "name": "test_concurrent_demo_step_runs_once",
+      "status": "passed"
+    },
+    {
+      "name": "test_rule_explanation_preserves_approval_and_bounds",
+      "status": "passed"
+    },
+    {
+      "name": "test_internal_auditor_can_complete_review_but_not_approve",
+      "status": "passed"
+    },
+    {
       "name": "test_ai_failures_preserve_rules_and_log_attempt[timeout]",
       "status": "passed"
     },
@@ -122,13 +150,15 @@
     }
   ],
   "source_hashes": {
-    "backend\\analysis.py": "ffe663b72b1286a3984ef8e329842f0f4bfa2cb4f2cc28261a361ee0595cff94",
-    "backend\\domain.py": "73bd3cf0d78090aebe41d56f9f6e87f1d9a237286139f2f69445e3b45b8b040f",
+    "backend\\analysis.py": "7efff37986c55133a05c6ca74d6ab06188cb6d0245d47aa843a75358b11bc304",
+    "backend\\domain.py": "b2431b1581253f2bf2c16c08f971d537adb7d6ad68f460c40e376c83aca2dce5",
+    "backend\\guided_demo.py": "dbac81679363d96429585fb5dd67cce9357df0f485cb64e0078541d42c184ba5",
     "backend\\launch.py": "49e9c3066e6f3c6cf465fbe0fbb8263471ff110f89526a05036c7f5fcddbf7dd",
-    "backend\\main.py": "9763443aefad7f09eaee8fd8687599f0cfccd360960c507ab446a1568fda1067",
+    "backend\\main.py": "bf5da515f41cc46707b62b1e9a897af4244fc34ed27722fe8f54b4c7a2a6aa1f",
     "backend\\store.py": "a2f28274d9f3ec0c40e7fe695044d0fa88a700616b419f4419847bd52498a6c9",
     "backend\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "backend\\tests\\test_engine.py": "dd50809e96fea8266d4a8e46daff1fbd18a7aa068634bf740ea03fc6af8d4b5d",
-    "backend\\tests\\test_submission.py": "524c580b290b68f8796531a0167dc13ff4d9b308c33e45db24bf0e57387281bf"
+    "backend\\tests\\test_guided_demo.py": "32dd81d3ae274c17ccd6d5ac987ccad89b87b3b162feaa55482848b8fcf5d483",
+    "backend\\tests\\test_submission.py": "baa9c6b7508e838073f62e956aea08eb8751c73e7ad3422a7096df76c246b622"
   }
 }

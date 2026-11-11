@@ -1,5 +1,13 @@
 # NEXORA · W07
 
+## 최신 업무 화면
+
+기존 앱 [NEXORA](https://nexora-n28m.axhub.app)를 유지합니다. 거래처 관계·합산·AI 판단·승인·모의 지급·부서 작업·Decision Replay·감사 추적을 메뉴에서 엽니다. [Guided Demo](https://nexora-n28m.axhub.app/workspace/demo)는 로그인 계정별 격리된 합성 실행으로 A/B/C를 단계별 처리하며 운영 원본을 초기화하지 않습니다. 새 코드는 배포 검증 결과와 함께 확인하세요.
+
+외부 모델 자격 증명이 없어도 **규칙 기반 근거 설명**을 사용할 수 있습니다. 이는 생성형 AI 결과가 아니며 화면과 감사 기록에서 구분합니다. 내부감시팀은 조사 결과를 저장하지만 지급 승인 권한은 없습니다. 모의 지급 성공 시 재무 후속 작업도 완료됩니다.
+
+[구현 상태 감사](docs/implementation-audit.md) · [제출용 시연 대본](docs/demo-script.md) · [실행한 검사](docs/test-results.md)
+
 ## 마스터 프롬프트 대응 문서
 
 전체 앱 로컬 실행 설정은 [docker-compose.full.yml](docker-compose.full.yml), 설정·인증·미검증 범위는 [로컬 실행 안내](docs/local-compose.md). Docker가 없는 현재 PC에서는 컨테이너 실행을 검증하지 않았습니다.

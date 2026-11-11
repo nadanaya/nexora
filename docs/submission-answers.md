@@ -12,7 +12,7 @@ NEXORA는 Corevia 영업지원팀의 관련 거래처 판매장려금 심사를 
 
 ## 3. 대표 실행 사례
 
-브라우저와 실제 API·PostgreSQL로 합성 A/B/C를 실행했습니다. A:200만원 요청→증빙 검토→별도 사용자 승인→재무 일정→모의 지급. B:240만원 그룹 정정→90만원 분리→기존 승인 무효화·일정 중지→재심사. C:증빙 부족 보류·영업 작업→합성 회신 검토·완료→재상신·거절. B에 필수 확장과 재무 영향이 실제 반영됐습니다. AI 설명 어댑터는 있으나 키 부재로 실제 호출은 미검증입니다. 증거는 submission/evidence의 이미지·상태 JSON·실행 기록입니다.
+기존 브라우저 시연은 A200만원 지급·B240→90만원 분리·C보류와 거절입니다. 새 Guided Demo는 계정별 격리 DB에서 A120만원 지급, B계좌 정정으로120→230만원 합병 및 임원 재승인, C부족 정보 보류·영업 회신·거절을 제공합니다. 새 흐름을 실제 API·PostgreSQL 테스트로 검증했습니다. B의 Decision Replay에서 전후 그룹·금액·권한·상태를 비교하며 영업·재무·내부감시 작업을 생성합니다. AI 미연결 시 규칙 기반 설명으로 명시하고 실제 모델 호출과 구분합니다. 증거는 submission/evidence에 있습니다.
 
 ## 4. 추가 확장 목록
 
@@ -20,8 +20,8 @@ NEXORA는 Corevia 영업지원팀의 관련 거래처 판매장려금 심사를 
 
 ## 5. 실행·재현 방법
 
-운영 앱은 https://nexora-n28m.axhub.app 입니다. React·Next·TypeScript·Tailwind와 FastAPI·Pydantic·NetworkX·psycopg·PostgreSQL을 사용합니다. python scripts/test-postgres.py로 격리 DB 검사를 실행합니다. python scripts/demo-server.py 후 python scripts/demo-api.py all로 합성 시연을 재현하고 snapshot·stop으로 기록·종료합니다. 상세 입력은 submission/DEMO_GUIDE.md에 있습니다. 운영 데이터를 초기화하지 않습니다. 외부 AI는 서버의 LLM_API_KEY·LLM_BASE_URL·LLM_MODEL 설정 후 재검증해야 합니다. Compose는 현재 DB 전용입니다.
+운영 앱은 https://nexora-n28m.axhub.app 입니다. React·Next·TypeScript·Tailwind와 FastAPI·Pydantic·NetworkX·psycopg·PostgreSQL을 사용합니다. python scripts/test-postgres.py로 격리 DB 검사를 실행합니다. 새 /workspace/demo에서 로그인 후 A/B/C를 단계별 실행합니다. 새로 시작해도 운영 자료와 기존 실행의 감사 기록을 삭제하지 않습니다. docs/demo-script.md에 화면 순서를 정리했습니다. 외부 AI는 서버 LLM_API_KEY·LLM_BASE_URL·LLM_MODEL 설정 후 실제 호출 검증이 필요합니다. 전체 Compose 설정은 있으나 Docker가 없어 기동 미검증입니다.
 
 ## 6. 제출 전 자기점검
 
-핵심 관계·합산·승인·모의 지급·부서 작업·감사와 A/B/C를 검증했습니다. Python28건·Node2건 통과, 외부 AI1건은 자격 증명 부재로 건너뛰었습니다. 기존 lounge 앱 운영 배포와 HTTPS200을 확인했습니다. 실제 모델 호출·은행 지급·대규모 부하·임의 시점 그래프는 완료로 주장하지 않습니다. 제출 화면의 실시간 문항·일정·접수는 미확인입니다. 제공 A04 기반 초안이며 제출 완료나 공식 평가 통과를 뜻하지 않습니다.
+핵심 관계·합산·승인·모의 지급·부서 작업·감사와 A/B/C를 검증했습니다. 최신 PostgreSQL35건·Node2건 통과, 외부 AI1건은 키 부재로 제외했습니다. 이전 운영 배포 성공과 새 배포 결과를 별도 증거로 구분합니다. 실제 모델 호출·은행 지급·대규모 부하·임의 시점 그래프는 완료로 주장하지 않습니다. 제출 화면의 실시간 문항 제한·접수는 미확인입니다. A04 기반 초안이며 제출 완료나 공식 평가 통과를 뜻하지 않습니다.

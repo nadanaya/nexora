@@ -11,4 +11,5 @@ Dockerfile
 **/*.pyc
 backend/tests
 scripts/demo*.py
+scripts/verify-guided-api.py
 submission

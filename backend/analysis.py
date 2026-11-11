@@ -19,7 +19,7 @@ class Fact(StrictModel):
 
 
 class SuggestedTask(StrictModel):
-    department:str=Field(pattern='^(영업팀|영업지원팀|재무팀)$')
+    department:str=Field(pattern='^(영업팀|영업지원팀|재무팀|내부감시팀)$')
     title:str=Field(min_length=2,max_length=100)
     reason:str=Field(min_length=2,max_length=500)
     evidence_refs:list[str]=Field(min_length=1,max_length=30)
@@ -27,6 +27,9 @@ class SuggestedTask(StrictModel):
 
 class Analysis(StrictModel):
     summary:str=Field(min_length=1,max_length=2000)
+    decision_context:str=Field(min_length=1,max_length=2000)
+    recommendation:str=Field(min_length=1,max_length=1000)
+    alternatives:list[str]=Field(max_length=20)
     evidence:list[Fact]=Field(max_length=30)
     risk_level:str=Field(pattern='^(LOW|MEDIUM|HIGH|UNKNOWN)$')
     missing_information:list[str]=Field(max_length=30)
@@ -89,4 +92,24 @@ def generate(inputs):
     D.require(all(set(x['evidence_refs'])<=set(inputs['references']) for x in cited),'AI_EVIDENCE_MISMATCH','AI가 전달하지 않은 근거를 인용했습니다. 결과를 채택하지 않습니다.',502)
     # This authoritative snapshot comes from the rule engine, not the model.
     result['rule_result']=inputs['references']['calculation']
+    return result
+
+
+def explain(inputs):
+    """Deterministic fallback; never presented as a generated model response."""
+    calc=inputs['references']['calculation']
+    missing=inputs['references']['blockers']['items']
+    edges=[dict(claim=f"{v['left']}와 {v['right']}: 등록된 속성 {len(v['matched_fields'])}개 직접 일치",evidence_refs=[k])
+           for k,v in inputs['references'].items() if k.startswith('edge:')]
+    approval='영업지원 검토 후 영업임원 승인' if calc['executive_required'] else '영업지원 승인'
+    recommendation='증빙을 보완하고 별도 담당자의 검토를 요청하세요.' if missing else f'{approval}을 요청하세요.'
+    fact=dict(claim=f"월 그룹 합계 {calc['group_month_exposure_krw']:,}원. {approval} 대상입니다.",evidence_refs=['calculation'])
+    result=Analysis(summary='규칙 기반 설명입니다. 외부 AI 생성 결과가 아닙니다.',decision_context=f"{inputs['case']} / {inputs['revision']}차 검토 / 기준일 2026-07-01",
+        evidence=edges+[fact],risk_level='UNKNOWN',missing_information=missing,recommendation=recommendation,recommended_action=recommendation,
+        alternatives=['증빙 보완 후 재상신','권한 있는 담당자의 거절 및 사유 기록'],affected_departments=['영업팀','영업지원팀','재무팀','내부감시팀'],
+        assumptions=['기안자 분리와 수취계좌 증빙은 추가 통제'],relationship_evidence=edges,payment_risks=[fact],missing_evidence=missing,
+        suggested_tasks=[],facts=[fact],uncertainties=['현재 관계는 당시 관계 또는 부정 확정의 증거가 아닙니다.'],
+        suggested_actions=[recommendation],limitations=['규칙 기반 설명이며 실제 모델 분석이 아닙니다.']).model_dump()
+    result['rule_result']=calc
+    result['mode']='deterministic'
     return result

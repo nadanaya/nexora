@@ -15,6 +15,7 @@ from backend.tests.test_engine import client, request, files, state, act, ready,
 def model_output():
     fact=dict(claim='규칙 엔진의 합산액과 증빙 상태를 검토해야 합니다.',evidence_refs=['calculation'])
     return dict(summary='모의 모델 응답 · 실제 외부 AI 결과가 아닙니다.',relationship_evidence=[],payment_risks=[fact],
+                decision_context='합성 심사',recommendation='담당자 검토',alternatives=['증빙 보완'],
                 evidence=[fact],risk_level='UNKNOWN',missing_information=['수취계좌 미확인'],
                 recommended_action='사람이 증빙을 검토합니다.',affected_departments=['영업팀','재무팀'],assumptions=['합성 시연'],
                 missing_evidence=['수취계좌 확인'],suggested_tasks=[dict(department='영업팀',title='증빙 확인',reason='수취계좌 증빙을 확인합니다.',evidence_refs=['blockers'])],
