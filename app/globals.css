@@ -2,3 +2,47 @@
    axhub.css 는 자동 생성이라 고치지 않아요. 이 앱에만 필요한 CSS 가 꼭 있으면 아래에 더하세요
    (대부분은 Tailwind 클래스로 충분해요 — 화면 전용 CSS 파일은 만들지 않아요). */
 @import "./axhub.css";
+
+.nx-tour-section {
+  --tour-progress: .5;
+  scroll-margin-block-start: 5rem;
+}
+
+.nx-tour-scene {
+  display: grid;
+  place-items: center;
+  min-height: 17rem;
+  overflow: clip;
+  perspective: 55rem;
+  pointer-events: none;
+}
+
+.nx-tour-stack {
+  position: relative;
+  width: min(76%, 19rem);
+  height: 4.5rem;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(31deg - 23deg * var(--tour-progress))) rotateY(calc(-29deg + 53deg * var(--tour-progress)));
+}
+
+.nx-tour-layer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform: translate3d(0, calc(var(--offset) * 3.7rem), calc(var(--offset) * 2rem));
+}
+
+.nx-tour-layer:nth-child(1) { --offset: -1; }
+.nx-tour-layer:nth-child(2) { --offset: 0; }
+.nx-tour-layer:nth-child(3) { --offset: 1; }
+
+@media (max-width: 47.99rem) {
+  .nx-tour-scene { min-height: 13rem; }
+  .nx-tour-stack { height: 4.5rem; transform: rotateY(calc(-11deg + 22deg * var(--tour-progress))); }
+  .nx-tour-layer { transform: translate3d(0, calc(var(--offset) * 3.4rem), calc(var(--offset) * 1rem)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-tour-stack { transform: none; }
+}

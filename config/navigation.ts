@@ -22,6 +22,7 @@ export type NavItem = {
 
 export const NAVIGATION: NavItem[] = [
   { label: "통제 현황", href: "/", icon: House },
+  { label: "업무 흐름 둘러보기", href: "/tour", icon: SquaresFour },
   { label: "거래처 관계 분석", href: "/workspace/relationships", icon: GitBranch },
   { label: "장려금 합산 검증", href: "/workspace/incentives", icon: ShieldCheck },
   { label: "AI 판단 센터", href: "/workspace/ai", icon: Brain },
