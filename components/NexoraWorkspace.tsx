@@ -4,6 +4,7 @@ import { Card, buttonVariants } from '@heroui/react'
 import { PageHeader } from '@/components/ax'
 import { Shell } from '@/components/Shell'
 import { OperationsDashboard } from '@/components/OperationsDashboard'
+import { CoreviaContext } from '@/components/CoreviaContext'
 
 export function NexoraWorkspace({
   authenticated,
@@ -25,10 +26,11 @@ export function NexoraWorkspace({
   return <Shell appName="NEXORA" account={account} isAdmin={isAdmin}>
     <div className="flex flex-col gap-5">
       <PageHeader
-        title="판매장려금 통제"
-        description="관계 확인부터 사람 승인, 모의 지급까지."
+        title="Corevia 판매장려금 운영"
+        description="NEXORA · Cosmetics Trade & Rebate Operations"
         actions={<span className="t-caption whitespace-nowrap">W07 · NEXORA</span>}
       />
+      {(!initialTab || initialTab === '현황') && <CoreviaContext />}
       <Card><Card.Content>
         <p className="t-small">
           실제 은행 이체 없는 모의 지급 환경입니다. 관계 일치는 검토 신호이며, 입금계좌를 지급 수취계좌로 추정하지 않습니다.

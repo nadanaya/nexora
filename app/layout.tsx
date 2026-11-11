@@ -4,8 +4,8 @@ import { NoriPet } from "@/components/NoriPet";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NEXORA · 기업 통제 플랫폼",
-  description: "거래처 관계 분석, 금융 통제, 승인과 감사 이력을 연결하는 W07 운영 플랫폼",
+  title: "NEXORA · Cosmetics Trade & Rebate Operations",
+  description: "가상 화장품 그룹 Aurora의 제조 자회사 Corevia Cosmetics를 위한 거래처 관계·판매장려금·사람 승인·모의 지급 운영 시스템",
 };
 
 // 다크 모드 — 그리기 전에 시스템 설정을 보고 <html data-theme="dark"> 를 붙여요 (깜박임 방지).

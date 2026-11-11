@@ -3,6 +3,17 @@
    (대부분은 Tailwind 클래스로 충분해요 — 화면 전용 CSS 파일은 만들지 않아요). */
 @import "./axhub.css";
 
+.corevia-context { overflow: clip; }
+.corevia-intro { display: flex; flex-direction: column; gap: 1.2rem; padding: clamp(1.4rem, 3vw, 3rem); }
+.corevia-intro h2 { max-width: 52rem; line-height: 1.5; letter-spacing: -.025em; }
+.corevia-intro > .t-body { max-width: 49rem; line-height: 1.85; }
+.corevia-workflow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: .75rem; gap: .5rem; background: var(--surface); }
+.corevia-stage { display: flex; flex-direction: column; gap: .65rem; height: 100%; padding: 1.2rem; border-radius: var(--radius-card, .75rem); background: var(--content); }
+.corevia-stage:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+.corevia-stage:hover { background: var(--primary-soft); }
+@media (max-width: 64rem) { .corevia-workflow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 35rem) { .corevia-workflow { grid-template-columns: 1fr; } }
+
 .nx-tour-section {
   --tour-progress: .5;
   scroll-margin-block-start: 5rem;

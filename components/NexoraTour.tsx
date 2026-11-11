@@ -73,9 +73,9 @@ export function NexoraTour({ authenticated, isAdmin, signInUrl }: {
   return <Shell appName="NEXORA" isAdmin={isAdmin} account={null}>
     <div ref={tour} className="flex flex-col gap-6">
       <header className="flex flex-col gap-4 rounded-card bg-content p-6 sm:p-10">
-        <p className="t-caption">NEXORA · 판매장려금 통제</p>
+        <p className="t-caption">NEXORA · Cosmetics Trade &amp; Rebate Operations</p>
         <h1 className="t-page-title">관계가 바뀌면 승인도 달라집니다</h1>
-        <p className="t-body">거래처 확인부터 승인, 모의 지급, 감사 기록까지 실제 업무 화면으로 이어집니다.</p>
+        <p className="t-body">Aurora 그룹의 화장품 제조 자회사 Corevia Cosmetics. 화장품 거래처의 판매장려금 정산에서 영업·영업지원·재무·내부 감시의 판단과 후속 업무를 연결합니다.</p>
         {!authenticated && <p className="t-small">업무 화면과 합성 시연은 AXHub 로그인 후 이용할 수 있습니다.</p>}
         <div className="flex flex-wrap gap-3">
           <a className={buttonVariants({ variant: 'primary' })} href="/workspace/demo">Guided Demo 열기</a>
