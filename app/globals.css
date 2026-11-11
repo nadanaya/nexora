@@ -3,6 +3,10 @@
    (대부분은 Tailwind 클래스로 충분해요 — 화면 전용 CSS 파일은 만들지 않아요). */
 @import "./axhub.css";
 
+.nx-stat-link { height: auto; width: 100%; padding: 0; text-align: left; white-space: normal; justify-content: stretch; }
+.nx-stat-link > * { width: 100%; height: 100%; }
+.nx-stat-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
 .corevia-context { overflow: clip; border-radius: .25rem; }
 /* design-token-allow: reference-led Corevia brand palette; operational status tokens stay unchanged. */
 :root {

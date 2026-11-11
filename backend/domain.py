@@ -54,6 +54,8 @@ def event(s, actor, kind, target, details):
     previous = s['events'][-1]['hash'] if s['events'] else ''
     e = dict(id=str(uuid4()), sequence=len(s['events'])+1, at=now(), actor=actor['id'],
              role=actor['role'], kind=kind, target=target, details=deepcopy(details), previous_hash=previous)
+    if s.get('demo'):
+        e.update(source_kind='synthetic', provenance='DEMO')
     e['hash'] = digest(e)
     s['events'].append(e)
     return e
@@ -148,6 +150,8 @@ def task(s,actor,case,department,title,reason):
             event(s,actor,'TASK_UPDATED',existing['id'],dict(reason=reason))
         return existing
     t = dict(id=str(uuid4()),case=case,department=department,assignee_role=department,title=title,reason=reason,state='OPEN', created_at=now(),due_date=None,result=None)
+    if s.get('demo'):
+        t.update(source_kind='synthetic', provenance='DEMO')
     s['tasks'][t['id']]=t
     event(s,actor,'TASK_CREATED',t['id'],dict(case=case,department=department,title=title))
     return t
@@ -213,6 +217,8 @@ def create_case(s,actor,agency,month):
     require(not any(set(items)&set(c['items']) for c in s['cases'].values() if c['state']!='SUPERSEDED'),'RESERVED','이미 심사가 생성된 항목입니다. 기존 심사를 재검토하세요.')
     c=dict(id=str(uuid4()),agency=agency,month=month,items=items,revision=1,state='DRAFT',
            creator=actor['id'],evidence=[],payout={},approvals=[],schedule=None,source_kind='derived')
+    if s.get('demo'):
+        c.update(source_kind='synthetic', provenance='DEMO', original_reference=dict(agency=agency, items=deepcopy(items), scope='W07_SNAPSHOT'))
     s['cases'][c['id']]=c
     event(s,actor,'CASE_CREATED',c['id'],dict(items=items,context=context(s,c)))
     return c
@@ -295,6 +301,11 @@ def operate(s,actor,id,body,key):
             c['schedule']['state']='CANCELLED'
             event(s,actor,'SCHEDULE_CANCELLED',id,dict(reason=reason))
         task(s,actor,id,'영업팀','거절 사유 보완',reason)
+    elif action=='hold':
+        require(actor['role'] in ['영업지원팀','영업임원'], 'FORBIDDEN', '심사 담당자가 보류합니다.', 403)
+        require(c['state'] in ['DRAFT','PENDING_SUPPORT','PENDING_EXECUTIVE','APPROVED','SCHEDULED','REASSESSMENT_REQUIRED'], 'INVALID_STATE', '현재 상태에서 보류할 수 없습니다.')
+        invalidate(s,actor,c,reason)
+        c['state']='ON_HOLD'
     elif action=='revoke':
         require(actor['id'] in [a['actor'] for a in c['approvals']],'FORBIDDEN','승인 당사자만 승인을 취소합니다.',403)
         invalidate(s,actor,c,reason)
@@ -393,4 +404,5 @@ def public_state(s,actor):
         rebates=list(s['rebates'].values()),groups=groups,
         edges=[dict(left=a,right=b,**data) for a,b,data in g.edges(data=True)],cases=cases,
         tasks=list(s['tasks'].values()),payments=list(s['payments'].values()),
-        impacts=list(s['impacts'].values()),events=s['events'][-100:],members=s['members'] if actor['admin'] else {},scenario=s.get('scenario'))
+        impacts=list(s['impacts'].values()),events=s['events'][-100:],members=s['members'] if actor['admin'] else {},scenario=s.get('scenario'),
+        demo=s.get('demo'), workflow_counts=dict(active_cases=sum(c['state'] not in ['SIMULATED_PAID','REJECTED','SUPERSEDED'] for c in cases), open_tasks=sum(t['state']=='OPEN' for t in s['tasks'].values())))

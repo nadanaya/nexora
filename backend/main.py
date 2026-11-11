@@ -15,6 +15,7 @@ from . import domain as D
 from . import analysis as AI
 from .store import migrate, transaction, connection
 from .guided_demo import register as register_demo
+from . import showcase as Showcase
 
 
 @asynccontextmanager
@@ -28,12 +29,19 @@ async def lifespan(app):
         data=json.loads(bootstrap.read_text(encoding='utf-8'))
         D.require(data['matching_key_fingerprint']==hashlib.sha256(os.environ['NEXORA_MATCH_KEY'].encode()).hexdigest(),
                   'MATCH_KEY_CHANGED','비교 키가 변경됐습니다. 기존 데이터와 다른 키로 시작하지 않습니다.',503)
-        with transaction(os.environ.get('APPHUB_TENANT','lounge'),True) as s:
-            if not s['agencies']:
-                s.update(data)
-            else:
+        tenant = os.environ.get('APPHUB_TENANT','lounge')
+        with transaction(tenant) as s:
+            needs_import = not s['agencies']
+            if not needs_import:
                 D.require(s.get('matching_key_fingerprint')==data['matching_key_fingerprint'],
                           'MATCH_KEY_CHANGED','기존 데이터의 비교 키가 다릅니다. 이전 키를 유지해야 합니다.',503)
+        if needs_import:
+            with transaction(tenant,True) as s:
+                if not s['agencies']:
+                    s.update(data)
+                else:
+                    D.require(s.get('matching_key_fingerprint')==data['matching_key_fingerprint'],
+                              'MATCH_KEY_CHANGED','기존 데이터의 비교 키가 다릅니다. 이전 키를 유지해야 합니다.',503)
     yield
 
 
@@ -67,6 +75,8 @@ async def identity(request:Request):
 
 
 def actor_in(s,identity):
+    if identity.get('demo_identity'):
+        return {**identity, 'role': identity['business_role']}
     member=s['members'].get(identity['id'])
     D.require(member or identity.get('admin'),'NOT_MEMBER','관리자가 업무 역할을 등록해야 합니다.',403)
     return dict(**identity,role=member['role'] if member else '조회전용')
@@ -270,3 +280,69 @@ def analysis(id:str,identity=Depends(identity)):
         s['cases'][id]['analysis']=dict(output=result,model=os.environ['LLM_MODEL'],input_hash=input_hash,source_kind='derived',at=D.now(),stale=False)
         D.event(s,actor,'AI_ANALYSIS_CREATED',id,dict(model=os.environ['LLM_MODEL'],input_hash=input_hash))
     return result
+
+
+# Same handlers and same role/state checks; only the aggregate key changes.
+# The signed identity and operational member registry remain authoritative.
+async def showcase_identity(request: Request):
+    real = await identity(request)
+    with transaction(real['tenant']) as s:
+        actor = actor_in(s, real)
+    return {**real, 'tenant': Showcase.tenant(real['tenant']), 'demo_identity': True,
+            'business_role': actor['role'], 'base_tenant': real['tenant']}
+
+
+@app.post('/api/v1/showcase/seed')
+def showcase_seed(identity=Depends(identity)):
+    D.require(identity['admin'], 'FORBIDDEN', '관리자만 DEMO 초기 데이터를 생성합니다.', 403)
+    with transaction(identity['tenant']) as original:
+        actor = actor_in(original, identity)
+        with transaction(Showcase.tenant(identity['tenant']), True) as demo:
+            return Showcase.seed(demo, original, actor, os.environ['NEXORA_MATCH_KEY'])
+
+
+@app.get('/api/v1/showcase/workspace')
+def showcase_workspace(identity=Depends(showcase_identity)):
+    result = workspace(identity)
+    if not result['demo']:
+        result['demo'] = dict(initialized=False, provenance='DEMO', source_kind='synthetic', label='DEMO 초기 데이터 미생성')
+    return result
+
+
+@app.post('/api/v1/showcase/cases')
+def showcase_case(body: NewCase, identity=Depends(showcase_identity)):
+    return new_case(body, identity)
+
+
+@app.post('/api/v1/showcase/cases/{id}/actions')
+def showcase_action(id: str, body: Action, identity=Depends(showcase_identity)):
+    if body.action == 'evidence':
+        D.require(body.source_kind == 'synthetic', 'DEMO_SOURCE', 'DEMO 증빙은 합성 자료로 표시하세요.', 422)
+    return operate(id, body, identity)
+
+
+@app.post('/api/v1/showcase/cases/{id}/explanation')
+def showcase_explanation(id: str, identity=Depends(showcase_identity)):
+    return explanation(id, identity)
+
+
+@app.post('/api/v1/showcase/cases/{id}/analysis')
+def showcase_analysis(id: str, identity=Depends(showcase_identity)):
+    return analysis(id, identity)
+
+
+@app.post('/api/v1/showcase/relationships/change')
+def showcase_change(body: Change, identity=Depends(showcase_identity)):
+    D.require(body.source_kind == 'synthetic', 'DEMO_SOURCE', 'DEMO 정정은 합성 자료로 표시하세요.', 422)
+    return change(body, identity)
+
+
+@app.post('/api/v1/showcase/rebates/{id}/correct')
+def showcase_correct(id: str, body: Correction, identity=Depends(showcase_identity)):
+    D.require(body.source_kind == 'synthetic', 'DEMO_SOURCE', 'DEMO 정정은 합성 자료로 표시하세요.', 422)
+    return correct(id, body, identity)
+
+
+@app.post('/api/v1/showcase/tasks/{id}/resolve')
+def showcase_resolve(id: str, body: Resolution, identity=Depends(showcase_identity)):
+    return resolve(id, body, identity)
