@@ -16,9 +16,13 @@ import {
   Lock,
   Layers,
   Scale,
-  ScrollText
+  ScrollText,
+  TrendingUp,
+  LineChart
 } from 'lucide-react';
 import { RebateReview, UserProfile } from '../types';
+import { RebateTrendChart } from './RebateTrendChart';
+
 
 interface ReviewDetailModalProps {
   review: RebateReview | null;
@@ -49,7 +53,8 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
   onShowSoDAlert,
   onConsultAiAdvisor,
 }) => {
-  const [activeTab, setActiveTab] = useState<'OVERVIEW' | 'MATH' | 'AI_REPORT' | 'DOCS' | 'AUDIT'>('OVERVIEW');
+  const [activeTab, setActiveTab] = useState<'OVERVIEW' | 'MATH' | 'TREND' | 'AI_REPORT' | 'DOCS' | 'AUDIT'>('OVERVIEW');
+
   const [actionReason, setActionReason] = useState('');
   const [showActionForm, setShowActionForm] = useState<'REJECT' | 'HOLD' | 'RE_EXAM' | null>(null);
 
@@ -160,6 +165,20 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
             § II. W07 CALCULATION & CAP
           </button>
           <button
+            onClick={() => setActiveTab('TREND')}
+            className={`py-3.5 px-3.5 border-b-2 transition cursor-pointer flex items-center gap-1.5 shrink-0 tracking-wider ${
+              activeTab === 'TREND'
+                ? 'border-amber-500 text-amber-300 bg-amber-500/5'
+                : 'border-transparent text-stone-400 hover:text-stone-200'
+            }`}
+          >
+            <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
+            <span>§ III. REBATE TREND (6-MO)</span>
+            <span className="px-1.5 py-0.2 rounded text-[9px] bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono font-bold">
+              RECHARTS
+            </span>
+          </button>
+          <button
             onClick={() => setActiveTab('AI_REPORT')}
             className={`py-3.5 px-3.5 border-b-2 transition cursor-pointer flex items-center gap-1.5 shrink-0 tracking-wider ${
               activeTab === 'AI_REPORT'
@@ -168,7 +187,7 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            § III. AI RISK REPORT
+            § IV. AI RISK REPORT
           </button>
           <button
             onClick={() => setActiveTab('DOCS')}
@@ -179,7 +198,7 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
             }`}
           >
             <FileCheck className="w-3.5 h-3.5" />
-            § IV. BANK VERIFICATION
+            § V. BANK VERIFICATION
           </button>
           <button
             onClick={() => setActiveTab('AUDIT')}
@@ -190,9 +209,10 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
             }`}
           >
             <History className="w-3.5 h-3.5" />
-            § V. AUDIT TRAIL ({review.approvalHistory.length})
+            § VI. AUDIT TRAIL ({review.approvalHistory.length})
           </button>
         </div>
+
 
         {/* Tab Content Body */}
         <div className="p-5 sm:p-6 overflow-y-auto space-y-4 flex-1 text-xs">
@@ -228,8 +248,39 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
                 </div>
               </div>
 
+
+              {/* 6-Month Trend Highlight Widget */}
+              <div 
+                onClick={() => setActiveTab('TREND')}
+                className="p-3.5 rounded-xl bg-gradient-to-r from-[#0b101c] via-stone-900 to-[#0b101c] border border-stone-800 hover:border-amber-500/50 transition cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 group shadow-sm"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+                    <TrendingUp className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-cinzel text-xs font-bold text-stone-200 tracking-wide">
+                        과거 6개월 집행 추이 및 이상치(Anomaly) 시각화
+                      </span>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                        RECHARTS
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-stone-400 mt-0.5">
+                      당월 신청액(₩{review.calculatedRebateAmount.toLocaleString()}원)과 최근 6개월 지급액을 복합 차트로 비교하여 급증/급감 이상치를 감시합니다.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs font-cinzel font-bold text-amber-300 group-hover:text-amber-200 shrink-0">
+                  <span>추이 차트 분석</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </div>
+
               {/* Status and SoD Details */}
               <div className="p-4 rounded-xl bg-[#060a12] border border-stone-800 space-y-2.5">
+
                 <h3 className="font-editorial text-sm font-bold text-stone-100 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   기안 및 승인 통제 상태
@@ -303,12 +354,27 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
                       </span>
                     )}
                   </div>
+                  <div className="pt-2 flex justify-end">
+                    <button
+                      onClick={() => setActiveTab('TREND')}
+                      className="text-amber-300 hover:text-amber-200 text-[11px] font-semibold flex items-center gap-1.5 p-1 rounded hover:bg-stone-900 transition cursor-pointer"
+                    >
+                      <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
+                      <span>과거 6개월 추이 및 이상치 시각화 대조 (Recharts) →</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           )}
 
+
+          {activeTab === 'TREND' && (
+            <RebateTrendChart review={review} />
+          )}
+
           {activeTab === 'AI_REPORT' && (
+
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
