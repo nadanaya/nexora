@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Button, Drawer } from '@heroui/react'
 import { List } from '@phosphor-icons/react'
 import { NavList, PageContainer, Sidebar, TopBar, type NavLinkRenderer, type NavSection } from '@jocoding-ax-partners/react'
-import { APP_ICON, NAVIGATION } from '@/config/navigation'
+import { NAVIGATION } from '@/config/navigation'
 
 /**
  * 셸의 브라우저 쪽 — 상단바 · 사이드바 · 좁은 화면 서랍 · 본문 여백.
@@ -39,7 +39,17 @@ export function Shell({ appName, account, isAdmin = false, children }: { appName
   const nav = <NavList sections={sections} renderLink={renderNavigationLink} aria-label="주 메뉴" />
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="nx-main-theme flex min-h-screen flex-col">
+      <div className="nx-corporate-strip" role="status">
+        <div className="nx-corporate-strip__context">
+          <span className="nx-corporate-badge">Aurora Group</span>
+          <span className="nx-corporate-muted">화장품 그룹 지주사 관점</span>
+          <span aria-hidden="true" className="nx-corporate-divider">/</span>
+          <span className="nx-corporate-entity"><i aria-hidden="true" />Corevia Cosmetics</span>
+          <span className="nx-corporate-muted nx-corporate-desktop">· 판매장려금 운영 통제</span>
+        </div>
+        <span className="nx-corporate-system">W07 OPERATIONS</span>
+      </div>
       {/* 상단바는 스크롤해도 맨 위에 붙어 있어요. */}
       <TopBar
         className="sticky top-0"
@@ -84,9 +94,9 @@ export function Shell({ appName, account, isAdmin = false, children }: { appName
 
 function Brand({ appName }: { appName: string }) {
   return (
-    <Link href="/" className="flex h-[var(--topbar-height)] min-w-0 items-center gap-2.5 px-2 text-default lg:px-5">
-      <span className="grid size-7 shrink-0 place-items-center rounded-lg bg-primary text-on-primary">
-        <APP_ICON size={16} weight="fill" />
+    <Link href="/" className="nx-brand flex h-[var(--topbar-height)] min-w-0 items-center gap-2.5 px-2 text-default lg:px-5">
+      <span className="nx-brand-mark grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-on-primary" aria-hidden="true">
+        <span>N</span>
       </span>
       <span className="truncate text-body-03 font-semibold">{appName}</span>
     </Link>
