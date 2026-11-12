@@ -16,6 +16,7 @@ app.use(express.json());
 
 // Initialize Gemini if API key is present
 const apiKey = process.env.GEMINI_API_KEY;
+const modelName = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 let aiClient: GoogleGenAI | null = null;
 if (apiKey && apiKey !== 'MY_GEMINI_API_KEY') {
   try {
@@ -37,16 +38,17 @@ app.get('/api/status', (req, res) => {
   res.json({
     status: 'ok',
     provider: 'Google Gemini AI Engine',
-    model: 'gemini-3.8-flash',
+    model: modelName,
     isRealApiReady: Boolean(aiClient),
     hasKey: Boolean(apiKey && apiKey !== 'MY_GEMINI_API_KEY'),
     targetEntity: 'Corevia Cosmetics (Aurora Group)',
     w07Mission: '화장품 제조·유통 거래처 판매장려금 운영 및 통제',
     message: aiClient 
-      ? 'Gemini 3.8 Flash AI 심사 및 다자간 법무·감사 자문관 활성화됨' 
+      ? `${modelName} AI 심사 및 다자간 법무·감사 자문관 활성화됨` 
       : 'W07 규칙 엔진 및 법무 자문 모델 작동 중 (API 키 대기)',
   });
 });
+
 
 // AI Multi-Turn Advisory Chat Endpoint
 app.post('/api/chat', async (req, res) => {
@@ -86,7 +88,7 @@ app.post('/api/chat', async (req, res) => {
       }));
 
       const response = await aiClient.models.generateContent({
-        model: 'gemini-3.8-flash',
+        model: modelName,
         contents,
         config: {
           systemInstruction,
@@ -96,10 +98,11 @@ app.post('/api/chat', async (req, res) => {
       if (response && response.text) {
         return res.json({
           reply: response.text,
-          modelUsed: 'gemini-3.8-flash (Aurora Corevia Advisory Engine)',
+          modelUsed: `${modelName} (Aurora Corevia Advisory Engine)`,
           timestamp: new Date().toISOString().replace('T', ' ').substring(0, 16),
         });
       }
+
     } catch (apiError) {
       console.warn('Gemini chat generateContent failed, switching to expert rule engine fallback:', apiError);
     }
@@ -264,7 +267,7 @@ app.post('/api/ai-analysis', async (req, res) => {
 위 정보를 바탕으로 W07 통제 규칙(장려금 산식 검산, 지주사/마실커머스/Celtonic 특수관계자 이해상충, 월 누적 한도 초과, 수취계좌 실명 일치)을 엄격히 검토하여 분석 결과를 반환하세요.`;
 
       const response = await aiClient.models.generateContent({
-        model: 'gemini-3.8-flash',
+        model: modelName,
         contents: prompt,
         config: {
           responseMimeType: 'application/json',
@@ -309,9 +312,10 @@ app.post('/api/ai-analysis', async (req, res) => {
       if (response && response.text) {
         const parsed = JSON.parse(response.text);
         parsed.analyzedAt = new Date().toISOString().replace('T', ' ').substring(0, 16);
-        parsed.modelUsed = 'gemini-3.8-flash (Aurora Corevia Operational Model)';
+        parsed.modelUsed = `${modelName} (Aurora Corevia Operational Model)`;
         return res.json({ analysis: parsed });
       }
+
     } catch (apiError) {
       console.warn('Gemini API call failed, generating deterministic response:', apiError);
     }

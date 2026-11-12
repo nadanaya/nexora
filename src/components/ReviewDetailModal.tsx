@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { RebateReview, UserProfile } from '../types';
 import { RebateTrendChart } from './RebateTrendChart';
+import { ExecutiveAiAuditReport } from './ExecutiveAiAuditReport';
+
 
 
 interface ReviewDetailModalProps {
@@ -182,13 +184,28 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
             onClick={() => setActiveTab('AI_REPORT')}
             className={`py-3.5 px-3.5 border-b-2 transition cursor-pointer flex items-center gap-1.5 shrink-0 tracking-wider ${
               activeTab === 'AI_REPORT'
-                ? 'border-amber-500 text-amber-300'
+                ? 'border-amber-500 text-amber-300 bg-amber-500/5'
                 : 'border-transparent text-stone-400 hover:text-stone-200'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            § IV. AI RISK REPORT
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <span>§ IV. 심층 감사 보고서 (AUDIT REPORT)</span>
+            {review.aiAnalysis ? (
+              <span className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-bold border ${
+                review.aiAnalysis.riskLevel === 'CRITICAL' ? 'bg-rose-500/20 text-rose-300 border-rose-500/40' :
+                review.aiAnalysis.riskLevel === 'HIGH' ? 'bg-orange-500/20 text-orange-300 border-orange-500/40' :
+                review.aiAnalysis.riskLevel === 'MEDIUM' ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' :
+                'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+              }`}>
+                {review.aiAnalysis.riskScore}점 / {review.aiAnalysis.riskLevel}
+              </span>
+            ) : (
+              <span className="px-1.5 py-0.2 rounded text-[9px] bg-stone-800 text-stone-400 font-mono">
+                미분석
+              </span>
+            )}
           </button>
+
           <button
             onClick={() => setActiveTab('DOCS')}
             className={`py-3.5 px-3.5 border-b-2 transition cursor-pointer flex items-center gap-1.5 shrink-0 tracking-wider ${
@@ -309,8 +326,53 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
                   </div>
                 )}
               </div>
+
+              {/* AI Deep Audit Result Preview Card */}
+              {review.aiAnalysis && (
+                <div 
+                  onClick={() => setActiveTab('AI_REPORT')}
+                  className="p-4 rounded-xl bg-gradient-to-r from-[#0d0a14] via-stone-900 to-[#0a0d18] border border-amber-500/40 hover:border-amber-500/70 transition cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 group shadow-md"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-editorial font-bold text-lg shrink-0 border ${
+                      review.aiAnalysis.riskLevel === 'CRITICAL' ? 'bg-rose-950/60 border-rose-500/60 text-rose-300' :
+                      review.aiAnalysis.riskLevel === 'HIGH' ? 'bg-orange-950/60 border-orange-500/60 text-orange-300' :
+                      review.aiAnalysis.riskLevel === 'MEDIUM' ? 'bg-amber-950/60 border-amber-500/60 text-amber-300' :
+                      'bg-emerald-950/60 border-emerald-500/60 text-emerald-300'
+                    }`}>
+                      {review.aiAnalysis.riskScore}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-cinzel text-xs font-bold text-stone-200">
+                          AI 심층 감사 판정
+                        </span>
+                        <span className={`px-2 py-0.2 rounded-full text-[10px] font-mono font-bold uppercase border ${
+                          review.aiAnalysis.riskLevel === 'CRITICAL' ? 'bg-rose-500/20 text-rose-300 border-rose-500/40' :
+                          review.aiAnalysis.riskLevel === 'HIGH' ? 'bg-orange-500/20 text-orange-300 border-orange-500/40' :
+                          review.aiAnalysis.riskLevel === 'MEDIUM' ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' :
+                          'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                        }`}>
+                          {review.aiAnalysis.riskLevel}
+                        </span>
+                        <span className="px-2 py-0.2 rounded text-[10px] bg-stone-800 text-amber-300 border border-stone-700 font-mono font-bold">
+                          {review.aiAnalysis.recommendedAction}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-stone-300 mt-1 line-clamp-1">
+                        {review.aiAnalysis.summary}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs font-cinzel font-bold text-amber-300 group-hover:text-amber-200 shrink-0">
+                    <span>심층 감사 보고서 전문</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </div>
+                </div>
+              )}
             </div>
           )}
+
 
           {activeTab === 'MATH' && (
             <div className="space-y-4">
@@ -374,91 +436,40 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
           )}
 
           {activeTab === 'AI_REPORT' && (
-
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span className="font-editorial font-bold text-stone-100 text-sm">
-                    Gemini 3.8 Flash AI 특수관계 및 위험도 검증 보고서
-                  </span>
-                </div>
-                <button
-                  onClick={() => onRunAiAnalysis(review.id)}
-                  disabled={isAnalyzing}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-amber-300 font-semibold border border-stone-800 transition cursor-pointer"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                  <span>{isAnalyzing ? '분석 중...' : 'AI 재분석 실행'}</span>
-                </button>
-              </div>
-
+            <div>
               {review.aiAnalysis ? (
-                <div className="space-y-3">
-                  <div className="p-4 rounded-xl bg-[#05080f] border border-stone-800 flex items-start gap-3">
-                    <div className={`p-2 rounded-lg shrink-0 ${
-                      review.aiAnalysis.riskLevel === 'CRITICAL' ? 'bg-rose-500/20 text-rose-400' :
-                      review.aiAnalysis.riskLevel === 'HIGH' ? 'bg-orange-500/20 text-orange-400' :
-                      review.aiAnalysis.riskLevel === 'MEDIUM' ? 'bg-amber-500/20 text-amber-400' :
-                      'bg-emerald-500/20 text-emerald-400'
-                    }`}>
-                      <AlertTriangle className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-stone-100 text-sm font-editorial">
-                          위험 등급: {review.aiAnalysis.riskLevel} (리스크 스코어 {review.aiAnalysis.riskScore}/100)
-                        </span>
-                        <span className="text-stone-400 text-[10px]">모델: {review.aiAnalysis.modelUsed}</span>
-                      </div>
-                      <p className="text-xs text-stone-300 mt-1 leading-relaxed">
-                        {review.aiAnalysis.summary}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Compliance Checks List */}
-                  <div className="p-4 rounded-xl bg-[#060a12] border border-stone-800 space-y-2">
-                    <h4 className="font-editorial text-sm font-bold text-stone-100">4대 W07 통제 항목 자동 검증</h4>
-                    <div className="space-y-2">
-                      {review.aiAnalysis.complianceChecks.map((chk, i) => (
-                        <div key={i} className="flex items-start gap-2 p-2.5 rounded bg-stone-900/60 border border-stone-800/80">
-                          {chk.pass ? (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                          ) : (
-                            <AlertTriangle className={`w-4 h-4 shrink-0 mt-0.5 ${chk.severity === 'DANGER' ? 'text-rose-400' : 'text-amber-400'}`} />
-                          )}
-                          <div>
-                            <div className="font-semibold text-stone-200">{chk.label}</div>
-                            <div className="text-[11px] text-stone-400 mt-0.5">{chk.detail}</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Recommendations */}
-                  <div className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-500/30 text-indigo-200 space-y-1">
-                    <div className="font-bold font-editorial text-sm">AI 조치 권고: {review.aiAnalysis.recommendedAction}</div>
-                    <div className="text-[11px] text-stone-300">{review.aiAnalysis.justificationAdvice}</div>
-                    <div className="text-[10px] text-stone-400 pt-1">
-                      감사 대장 권고: {review.aiAnalysis.auditTrailRecommendation}
-                    </div>
-                  </div>
-                </div>
+                <ExecutiveAiAuditReport
+                  review={review}
+                  aiAnalysis={review.aiAnalysis}
+                  isAnalyzing={isAnalyzing}
+                  onRunAiAnalysis={() => onRunAiAnalysis(review.id)}
+                  onConsultAiAdvisor={onConsultAiAdvisor ? () => { onConsultAiAdvisor(review); onClose(); } : undefined}
+                />
               ) : (
-                <div className="p-8 text-center bg-[#05080f] rounded-xl border border-stone-800 text-stone-400">
-                  <p>아직 AI 심사 분석이 실행되지 않았습니다.</p>
+                <div className="p-10 text-center bg-[#05080f] rounded-2xl border border-stone-800 text-stone-400 space-y-4 shadow-xl">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mx-auto">
+                    <Sparkles className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <h3 className="font-editorial text-lg font-bold text-stone-200">
+                      아직 AI 심층 감사 보고서가 생성되지 않았습니다
+                    </h3>
+                    <p className="text-xs text-stone-400 mt-1 max-w-md mx-auto">
+                      Gemini 3.8 Flash 엔진이 W07 4대 통제 규정, 특수관계자 이해상충, 리스크 스코어(0~100점) 및 결재 권고 조치를 종합 판정합니다.
+                    </p>
+                  </div>
                   <button
                     onClick={() => onRunAiAnalysis(review.id)}
-                    className="mt-3 px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-stone-950 font-bold transition cursor-pointer font-cinzel text-xs"
+                    disabled={isAnalyzing}
+                    className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 hover:from-amber-500 hover:to-amber-500 text-stone-950 font-bold transition cursor-pointer font-cinzel text-xs shadow-lg shadow-amber-950/30 disabled:opacity-50"
                   >
-                    AI 심사 분석 실행하기
+                    {isAnalyzing ? 'Gemini 3.8 Flash 감사 분석 중...' : 'AI 심층 감사 보고서 즉시 생성'}
                   </button>
                 </div>
               )}
             </div>
           )}
+
 
           {activeTab === 'DOCS' && (
             <div className="space-y-3">
