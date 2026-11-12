@@ -1,0 +1,6 @@
+{
+  "name": "NEXORA - Cosmetics Trade & Rebate Operations",
+  "description": "가상 화장품 그룹 Aurora의 제조사 Corevia Cosmetics를 위한 거래처별 판매장려금 및 유통 관계 통합 분석·지급 검증 AI 운영 시스템 (Samil PwC W07)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
