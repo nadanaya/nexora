@@ -50,6 +50,7 @@ import { AiCostCalculatorModal } from './components/AiCostCalculatorModal';
 import { AppGuideModal } from './components/AppGuideModal';
 import { AuditLogView } from './components/AuditLogView';
 import { SodAlertModal } from './components/SodAlertModal';
+import { AiAdvisorChat } from './components/AiAdvisorChat';
 
 export default function App() {
   // Current user (defaults to Finance Manager 이재무 for direct review/approval demonstration)
@@ -121,7 +122,7 @@ export default function App() {
   }, []);
 
   // Active navigation tab
-  const [activeTab, setActiveTab] = useState<'reviews' | 'tasks' | 'network' | 'audit'>('reviews');
+  const [activeTab, setActiveTab] = useState<'reviews' | 'tasks' | 'network' | 'audit' | 'chat'>('reviews');
   const [reviewStatusFilter, setReviewStatusFilter] = useState<string>('ACTIVE');
 
   // Modals state
@@ -461,9 +462,11 @@ export default function App() {
         onResetSeedData={handleResetSeedData}
         onOpenCostCalculator={() => setIsCostCalculatorOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
+        onOpenChat={() => setActiveTab('chat')}
         activeReviewsCount={activeReviewsCount}
         openTasksCount={openTasksCount}
       />
+
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
@@ -478,20 +481,20 @@ export default function App() {
           onSetReviewStatusFilter={setReviewStatusFilter}
         />
 
-        {/* Navigation Tabs Bar */}
-        <div className="flex items-center gap-2 border-b border-slate-800 pb-2 text-xs font-bold overflow-x-auto">
+        {/* Navigation Tabs Bar - Sincere Editorial Style */}
+        <div className="flex items-center gap-2 border-b border-stone-800 pb-2 text-xs font-semibold overflow-x-auto">
           <button
             onClick={() => setActiveTab('reviews')}
-            className={`px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
+            className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
               activeTab === 'reviews'
-                ? 'bg-rose-600 text-white shadow-md shadow-rose-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-stone-900 text-amber-300 border border-amber-500/50 shadow-lg shadow-amber-950/20'
+                : 'bg-[#090e18] text-stone-400 hover:text-stone-200 border border-stone-800 hover:bg-stone-900'
             }`}
           >
-            <ClipboardList className="w-4 h-4" />
-            <span>판매장려금 심사 목록</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeTab === 'reviews' ? 'bg-white/20 text-white' : 'bg-slate-800 text-slate-400'
+            <ClipboardList className="w-4 h-4 text-amber-400" />
+            <span className="font-cinzel tracking-wider">§ I. 판매장려금 심사</span>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-sans font-bold ${
+              activeTab === 'reviews' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-stone-900 text-stone-400'
             }`}>
               진행 {activeReviewsCount}건
             </span>
@@ -499,16 +502,16 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab('tasks')}
-            className={`px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
+            className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
               activeTab === 'tasks'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-stone-900 text-indigo-300 border border-indigo-500/50 shadow-lg shadow-indigo-950/20'
+                : 'bg-[#090e18] text-stone-400 hover:text-stone-200 border border-stone-800 hover:bg-stone-900'
             }`}
           >
-            <Clock className="w-4 h-4" />
-            <span>열린 후속 작업</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeTab === 'tasks' ? 'bg-white/20 text-white' : 'bg-slate-800 text-indigo-300'
+            <Clock className="w-4 h-4 text-indigo-400" />
+            <span className="font-cinzel tracking-wider">§ II. 열린 후속 작업</span>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-sans font-bold ${
+              activeTab === 'tasks' ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40' : 'bg-stone-900 text-indigo-300'
             }`}>
               대기 {openTasksCount}건
             </span>
@@ -516,26 +519,43 @@ export default function App() {
 
           <button
             onClick={() => setActiveTab('network')}
-            className={`px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
+            className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
               activeTab === 'network'
-                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-stone-900 text-emerald-300 border border-emerald-500/50 shadow-lg shadow-emerald-950/20'
+                : 'bg-[#090e18] text-stone-400 hover:text-stone-200 border border-stone-800 hover:bg-stone-900'
             }`}
           >
-            <Network className="w-4 h-4" />
-            <span>거래처 관계망 & 지분 탐지</span>
+            <Network className="w-4 h-4 text-emerald-400" />
+            <span className="font-cinzel tracking-wider">§ III. 거래처 관계망</span>
           </button>
 
           <button
             onClick={() => setActiveTab('audit')}
-            className={`px-4 py-2 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
+            className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
               activeTab === 'audit'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                ? 'bg-stone-900 text-amber-300 border border-amber-500/50 shadow-lg shadow-amber-950/20'
+                : 'bg-[#090e18] text-stone-400 hover:text-stone-200 border border-stone-800 hover:bg-stone-900'
             }`}
           >
-            <History className="w-4 h-4" />
-            <span>불변 감사 로그 ({auditLogs.length})</span>
+            <History className="w-4 h-4 text-amber-400" />
+            <span className="font-cinzel tracking-wider">§ IV. 불변 감사 로그 ({auditLogs.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('chat')}
+            className={`px-4 py-2.5 rounded-xl transition cursor-pointer flex items-center gap-2 shrink-0 ${
+              activeTab === 'chat'
+                ? 'bg-stone-900 text-amber-300 border border-amber-500/60 shadow-lg shadow-amber-950/40 ring-1 ring-amber-500/30'
+                : 'bg-gradient-to-r from-[#0d1322] to-[#090e18] text-amber-300/90 hover:text-amber-200 border border-amber-500/30 hover:border-amber-500/50 hover:bg-stone-900'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+            <span className="font-cinzel tracking-wider font-bold">§ V. AI 법무·감사 자문관</span>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-sans font-bold ${
+              activeTab === 'chat' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+            }`}>
+              GEMINI 3.8
+            </span>
           </button>
         </div>
 
@@ -580,18 +600,28 @@ export default function App() {
         )}
 
         {activeTab === 'audit' && <AuditLogView logs={auditLogs} />}
+
+        {activeTab === 'chat' && (
+          <AiAdvisorChat
+            currentUser={currentUser}
+            reviews={reviews}
+            tasks={tasks}
+            onOpenReviewDetail={(r) => setSelectedReviewForModal(r)}
+          />
+        )}
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+
+      {/* Footer - Sincere Legal Editorial Colophon */}
+      <footer className="border-t border-stone-800 bg-[#05080f] py-7 text-center text-xs text-stone-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-slate-300">NEXORA</span>
-            <span>· Cosmetics Trade & Rebate Operations</span>
-            <span>(가상 화장품 그룹 Aurora · Corevia Cosmetics W07 과제)</span>
+            <span className="font-cinzel font-bold text-amber-400 tracking-wider">NEXORA</span>
+            <span className="font-editorial text-stone-300">· Cosmetics Trade & Rebate Operations</span>
+            <span className="text-stone-500 hidden md:inline">(Aurora Group · Corevia Cosmetics W07 과제)</span>
           </div>
-          <div className="text-slate-400 text-[11px]">
-            Samil PwC 화장품 제조사 판매장려금 및 유통 관계 분석 AI 운영 시스템
+          <div className="text-stone-400 text-[11px] font-sans">
+            Samil PwC 화장품 제조사 판매장려금 및 유통 관계 분석 AI 운영 거버넌스 시스템
           </div>
         </div>
       </footer>
@@ -610,7 +640,11 @@ export default function App() {
           onRunAiAnalysis={handleRunAiAnalysis}
           isAnalyzing={isAnalyzingId === selectedReviewForModal.id}
           onShowSoDAlert={handleShowSoDAlert}
+          onConsultAiAdvisor={() => {
+            setActiveTab('chat');
+          }}
         />
+
       )}
 
       {/* Simulate Payment Modal */}
@@ -646,7 +680,23 @@ export default function App() {
         }}
       />
 
+      {/* Floating AI Advisor Quick Summon Button */}
+      {activeTab !== 'chat' && (
+        <button
+          onClick={() => setActiveTab('chat')}
+          className="fixed bottom-6 right-6 z-40 bg-gradient-to-r from-stone-900 via-amber-950/90 to-stone-900 hover:from-amber-950 hover:to-stone-800 text-amber-300 border border-amber-500/50 px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-xs font-cinzel font-bold cursor-pointer transition transform hover:scale-105 group"
+          title="NEXORA AI 법무·감사 자문관 호출"
+        >
+          <div className="w-6 h-6 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300">
+            <Sparkles className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-12 transition-transform" />
+          </div>
+          <span>AI 법무 자문관</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        </button>
+      )}
+
       {/* Global Toast Notification */}
+
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs animate-bounce">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />

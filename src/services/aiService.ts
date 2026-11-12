@@ -37,6 +37,49 @@ export async function checkAiEngineStatus(): Promise<AiEngineStatus> {
   };
 }
 
+export interface ChatResponse {
+  reply: string;
+  modelUsed: string;
+  timestamp: string;
+}
+
+export async function sendAiChatMessage(
+  messages: Array<{ role: 'user' | 'model'; text: string }>,
+  context?: any
+): Promise<ChatResponse> {
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages, context }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return {
+        reply: data.reply,
+        modelUsed: data.modelUsed || 'gemini-3.8-flash',
+        timestamp: data.timestamp || new Date().toISOString().replace('T', ' ').substring(0, 16),
+      };
+    }
+  } catch (err) {
+    console.warn('Chat request failed, providing local fallback advice:', err);
+  }
+
+  // Graceful client fallback if server fetch fails
+  return {
+    reply: `### [NEXORA Corevia Cosmetics AI 자문관 알림]
+
+요청하신 질의에 대해 W07 판매장려금 통제 규정에 따른 검토 사항을 안내드립니다.
+
+1. **거래처 적격성 및 산식**: 신청된 장려금액이 계약 요율(통상 3.5%~6.0%) 및 Q3 실제 달성 매출액과 일치하는지 확인하십시오.
+2. **직무 분리(SoD)**: 영업 담당자의 기안과 재무 승인자의 권한이 분리되어 있는지 검증이 필요합니다.
+3. **특수관계자 및 한도**: Aurora Holdings 지분 또는 마실커머스 계열 연결 여부를 조회하고, 월간 누적 1억원 초과 시 추가 소명서 제출을 요청하십시오.`,
+    modelUsed: 'gemini-3.8-flash (Offline Safeguard)',
+    timestamp: new Date().toISOString().replace('T', ' ').substring(0, 16),
+  };
+}
+
 export async function runRebateAiAnalysis(review: RebateReview): Promise<AIAnalysisResult> {
   // Try server endpoint first
   try {

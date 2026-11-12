@@ -163,23 +163,23 @@ export const SodAlertModal: React.FC<SodAlertModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 overflow-y-auto animate-in fade-in duration-200">
-      <div className="bg-slate-900 border-2 border-amber-500/60 rounded-3xl max-w-3xl w-full my-auto shadow-2xl overflow-hidden flex flex-col">
+      <div className="bg-[#090e18] border-2 border-amber-500/60 rounded-3xl max-w-3xl w-full my-auto shadow-2xl overflow-hidden flex flex-col">
         {/* Modal Header */}
-        <div className="p-5 border-b border-slate-800 bg-gradient-to-r from-amber-950/40 via-slate-900 to-rose-950/30 flex items-start justify-between gap-4">
+        <div className="p-5 border-b border-stone-800 bg-[#05080f] flex items-start justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="p-3 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/40 shadow-inner">
+            <div className="p-3 rounded-2xl bg-amber-500/15 text-amber-400 border border-amber-500/40 shadow-inner">
               <ShieldAlert className="w-6 h-6 text-amber-400" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40 tracking-wider">
+                <span className="px-2 py-0.5 rounded text-[10px] font-cinzel font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/40 tracking-wider">
                   SoD 통제 위반 경고
                 </span>
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-stone-400 font-sans">
                   Aurora 내부회계관리제도 규정 제4조 (기안-승인 분리 원칙)
                 </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-black text-white tracking-tight mt-1 flex items-center gap-2">
+              <h2 className="text-lg sm:text-xl font-editorial font-bold text-stone-100 tracking-tight mt-1 flex items-center gap-2">
                 직무 분리(Segregation of Duties) 통제 위반 감지
               </h2>
             </div>

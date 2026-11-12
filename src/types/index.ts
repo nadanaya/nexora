@@ -159,3 +159,12 @@ export interface SodAlertData {
   customMessage?: string;
 }
 
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'model';
+  text: string;
+  timestamp: string;
+  userName?: string;
+  userRole?: 'SALES' | 'FINANCE' | 'AUDIT';
+}
+
