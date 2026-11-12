@@ -23,7 +23,8 @@ import {
   FollowUpTask, 
   AuditLog, 
   UserProfile, 
-  ReviewStatus 
+  ReviewStatus,
+  SodAlertData 
 } from './types';
 import { 
   INITIAL_REVIEWS, 
@@ -48,6 +49,7 @@ import { SimulatePaymentModal } from './components/SimulatePaymentModal';
 import { AiCostCalculatorModal } from './components/AiCostCalculatorModal';
 import { AppGuideModal } from './components/AppGuideModal';
 import { AuditLogView } from './components/AuditLogView';
+import { SodAlertModal } from './components/SodAlertModal';
 
 export default function App() {
   // Current user (defaults to Finance Manager 이재무 for direct review/approval demonstration)
@@ -127,7 +129,7 @@ export default function App() {
   const [paymentReviewForModal, setPaymentReviewForModal] = useState<RebateReview | null>(null);
   const [isCostCalculatorOpen, setIsCostCalculatorOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
-  const [sodAlertMessage, setSodAlertMessage] = useState<string | null>(null);
+  const [sodAlertData, setSodAlertData] = useState<SodAlertData | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isAnalyzingId, setIsAnalyzingId] = useState<string | null>(null);
 
@@ -136,6 +138,22 @@ export default function App() {
     setTimeout(() => {
       setToastMessage(null);
     }, 3800);
+  };
+
+  const handleShowSoDAlert = (data: { attemptedAction: string; reviewCode?: string; vendorName?: string; customMessage?: string }) => {
+    setSodAlertData({
+      isOpen: true,
+      attemptedAction: data.attemptedAction,
+      reviewCode: data.reviewCode,
+      vendorName: data.vendorName,
+      customMessage: data.customMessage,
+    });
+    logAudit(
+      '직무 분리(SoD) 통제 차단',
+      data.reviewCode,
+      data.vendorName,
+      `기안자 직군(${currentUser.name})의 승인 시도가 SoD 통제 규정에 의해 차단됨`
+    );
   };
 
   // Helper to add audit log
@@ -534,7 +552,7 @@ export default function App() {
             isAnalyzingId={isAnalyzingId}
             statusFilter={reviewStatusFilter}
             onStatusFilterChange={setReviewStatusFilter}
-            onShowSoDAlert={(msg) => setSodAlertMessage(msg)}
+            onShowSoDAlert={handleShowSoDAlert}
           />
         )}
 
@@ -591,7 +609,7 @@ export default function App() {
           onOpenSimulatePayment={(r) => setPaymentReviewForModal(r)}
           onRunAiAnalysis={handleRunAiAnalysis}
           isAnalyzing={isAnalyzingId === selectedReviewForModal.id}
-          onShowSoDAlert={(msg) => setSodAlertMessage(msg)}
+          onShowSoDAlert={handleShowSoDAlert}
         />
       )}
 
@@ -613,33 +631,20 @@ export default function App() {
       {/* App Guide Modal */}
       {isGuideOpen && <AppGuideModal onClose={() => setIsGuideOpen(false)} />}
 
-      {/* SoD Protection Alert Modal */}
-      {sodAlertMessage && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-amber-500/50 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center gap-3 text-amber-400 font-bold text-base">
-              <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400">
-                <AlertTriangle className="w-6 h-6" />
-              </div>
-              <span>직무 분리(SoD) 통제 경고</span>
-            </div>
-            <p className="text-xs text-slate-300 leading-relaxed bg-slate-950 p-3 rounded-xl border border-slate-800">
-              {sodAlertMessage}
-            </p>
-            <div className="flex items-center justify-between pt-2">
-              <div className="text-[11px] text-slate-400">
-                현재 역할: <strong className="text-white">{currentUser.name} ({currentUser.role})</strong>
-              </div>
-              <button
-                onClick={() => setSodAlertMessage(null)}
-                className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition cursor-pointer"
-              >
-                확인
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* SoD Protection Alert Modal with 2-Column Comparative Table UI */}
+      <SodAlertModal
+        isOpen={Boolean(sodAlertData?.isOpen)}
+        alertData={sodAlertData}
+        currentUser={currentUser}
+        onClose={() => setSodAlertData(null)}
+        onSwitchUser={(targetUser) => {
+          setCurrentUser(targetUser);
+          showToast(`역할이 [${targetUser.name} (${targetUser.role})]으로 전환되었습니다.`);
+        }}
+        onProceedAfterSwitch={() => {
+          showToast(`승인 권한자로 전환되었습니다. [승인] 버튼을 다시 클릭하여 결재를 확정하세요.`);
+        }}
+      />
 
       {/* Global Toast Notification */}
       {toastMessage && (

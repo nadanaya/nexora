@@ -29,7 +29,7 @@ interface ReviewDetailModalProps {
   onOpenSimulatePayment: (review: RebateReview) => void;
   onRunAiAnalysis: (reviewId: string) => void;
   isAnalyzing: boolean;
-  onShowSoDAlert: (msg: string) => void;
+  onShowSoDAlert: (data: { attemptedAction: string; reviewCode?: string; vendorName?: string; customMessage?: string }) => void;
 }
 
 export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
@@ -53,13 +53,21 @@ export const ReviewDetailModal: React.FC<ReviewDetailModalProps> = ({
 
   const handleApproveWithSoD = () => {
     if (currentUser.role === 'SALES') {
-      onShowSoDAlert(
-        '기안자(영업담당)와 승인자 직무 분리(SoD) 규정에 따라 영업직군은 승인 권한이 없습니다. 상단 우측에서 [이재무 과장 (재무승인자)] 또는 [박감사 팀장]으로 역할을 전환하세요!'
-      );
+      onShowSoDAlert({
+        attemptedAction: '판매장려금 재무 승인 확정',
+        reviewCode: review.code,
+        vendorName: review.vendorName,
+        customMessage: `영업직군(${currentUser.name})은 판매장려금 기안 권한만 보유하며 승인 전결권이 없습니다. 직무 분리(SoD) 규정에 따라 재무 승인자 권한이 필요합니다.`,
+      });
       return;
     }
     if (!review.accountVerified) {
-      onShowSoDAlert('수취계좌 예금주 실명 불일치 상태입니다. 먼저 증빙 확인이 필요합니다.');
+      onShowSoDAlert({
+        attemptedAction: '판매장려금 재무 승인 확정',
+        reviewCode: review.code,
+        vendorName: review.vendorName,
+        customMessage: '수취계좌 예금주 실명 불일치 상태입니다. 먼저 계좌 증빙 확인이 완료되어야 승인할 수 있습니다.',
+      });
       return;
     }
     onApprove(review.id);

@@ -150,3 +150,12 @@ export interface UserProfile {
   canAudit: boolean;
   canDisburse: boolean;
 }
+
+export interface SodAlertData {
+  isOpen: boolean;
+  attemptedAction: string;
+  reviewCode?: string;
+  vendorName?: string;
+  customMessage?: string;
+}
+
