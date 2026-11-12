@@ -34,6 +34,7 @@ tenant='nexora-submission-demo'
 key='synthetic-demo-matching-key-never-production'
 secret='synthetic-demo-signing-key-never-production-0000'
 actors={'draft':('기안 담당자','영업지원팀'),'support':('승인 담당자','영업지원팀'),'sales':('영업 소명 담당자','영업팀'),'executive':('영업임원','영업임원'),'finance':('재무 담당자','재무팀')}
+actors.update(viewer=('조회 담당자','조회전용'),admin=('검증 관리자','조회전용'))
 pg=Path(os.environ.get('PG_BIN','C:/Program Files/PostgreSQL/18/bin'))
 resume=len(sys.argv)>2 and sys.argv[1]=='--resume'
 cluster=Path(sys.argv[2]).resolve() if resume else Path(tempfile.mkdtemp(prefix='nexora-submission-demo-'))
@@ -67,6 +68,9 @@ os.environ.update(env)
 migrate()
 
 def fixture():
+    if os.environ.get('NEXORA_DEMO_W07') == '1':
+        source=root.parent/'01_참가자_배포용/04_원본데이터/01_corevia'
+        return {k:p.read_text(encoding='utf-8') for k,p in dict(agencies=source/'master/m_agency_cv.csv',rebates=source/'sales/sales_rebate_payment_cv.csv',deposits=source/'financials/fin_collection_history_cv.csv').items()}
     agencies=['agency_id|agency_name|representative_name|address|bank_account_no|rebate_eligible']
     rebates=['rebate_id|agency_id|period_ym|rebate_amount_krw|approval_status|approver|payment_date']
     deposits=['deposit_id|agency_id|deposit_date|amount_krw|bank_account_no']
@@ -95,6 +99,7 @@ with transaction(tenant,True) as state:
 evidence=root/'submission/evidence'
 evidence.mkdir(parents=True,exist_ok=True)
 traffic=[]
+fault_once=False
 for name,args in [('api',[sys.executable,'-m','uvicorn','backend.main:app','--host','127.0.0.1','--port',str(api_port),'--no-access-log']),('web',['node','node_modules/next/dist/bin/next','start','--hostname','127.0.0.1','--port',str(node_port)])]:
     log=(cluster/(name+'.log')).open('wb');logs.append(log)
     children.append(subprocess.Popen(args,cwd=root,env=env,stdout=log,stderr=log,creationflags=flags))
@@ -106,8 +111,19 @@ class Gateway(BaseHTTPRequestHandler):
     def do_GET(self):self.handle_request()
     def do_POST(self):self.handle_request()
     def handle_request(self):
+        global fault_once
         expected=f'127.0.0.1:{gateway_port}'
         if self.headers.get('Host')!=expected or self.headers.get('Origin',f'http://{expected}')!=f'http://{expected}':return self.send_json({'error':'Local demo origin required'},403)
+        if self.path=='/__demo/control':
+            html='<h1>ISOLATED E2E CONTROL</h1>'+''.join(f'<p><a href="/__demo/actor/{a}">{a}</a></p>' for a in actors)+'<a href="/__demo/fault-once">Next workspace request returns 503</a><p><a href="/workspace/approvals?scope=live">Open isolated workspace</a></p>'
+            data=html.encode();self.send_response(200);self.send_header('Content-Type','text/html; charset=utf-8');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
+        if self.path=='/__demo/fault-once':
+            fault_once=True
+            return self.send_json({'armed':'next workspace request only','scope':'isolated_loopback'})
+        if fault_once and self.path=='/api/engine/workspace':
+            fault_once=False
+            traffic.append(dict(at=D.now(),method=self.command,path=self.path,actor='isolated_fault',status=503,expected=True))
+            return self.send_json({'error':'격리 E2E: 일시적인 API 오류','code':'E2E_EXPECTED_FAILURE'},503)
         if self.path.startswith('/__demo/actor/'):
             actor=self.path.rsplit('/',1)[-1]
             if actor not in actors:return self.send_json({'error':'Unknown synthetic actor'},404)
@@ -130,7 +146,7 @@ class Gateway(BaseHTTPRequestHandler):
         if actor not in actors:actor='draft'
         name,role=actors[actor]
         headers={k:v for k,v in self.headers.items() if k.lower() not in ['connection','content-length','cookie'] and not k.lower().startswith('x-axhub-')}
-        headers.update({'X-AxHub-User-Id':'demo-'+actor,'X-AxHub-User-Name':base64.b64encode(('합성 '+name).encode()).decode(),'X-AxHub-Tenant-Slug':tenant,'X-AxHub-App-Role':'app_member','X-AxHub-Is-Admin':'false'})
+        headers.update({'X-AxHub-User-Id':'demo-'+actor,'X-AxHub-User-Name':base64.b64encode(('합성 '+name).encode()).decode(),'X-AxHub-Tenant-Slug':tenant,'X-AxHub-App-Role':'app_admin' if actor=='admin' else 'app_member','X-AxHub-Is-Admin':'true' if actor=='admin' else 'false'})
         size=int(self.headers.get('Content-Length','0'));body=self.rfile.read(size) if size else None
         conn=http.client.HTTPConnection('127.0.0.1',node_port,timeout=60)
         try:

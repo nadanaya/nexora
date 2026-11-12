@@ -33,7 +33,10 @@ export function Shell({ appName, account, isAdmin = false, children }: { appName
       })),
     },
   ]
-  const nav = <NavList sections={sections} renderLink={renderLink} aria-label="주 메뉴" />
+  const renderNavigationLink: NavLinkRenderer = ({ href, children, ...rest }) =>
+    /^https?:\/\//.test(href) ? <a href={href} target="_blank" rel="noreferrer" {...rest} onClick={() => setOpenedAt(null)}>{children}</a>
+      : <Link href={href} {...rest} onClick={() => setOpenedAt(null)}>{children}</Link>
+  const nav = <NavList sections={sections} renderLink={renderNavigationLink} aria-label="주 메뉴" />
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -89,15 +92,3 @@ function Brand({ appName }: { appName: string }) {
     </Link>
   )
 }
-
-/** 메뉴 링크 — 앱 안은 Next 의 Link, http(s) 주소는 새 탭. */
-const renderLink: NavLinkRenderer = ({ href, children, ...rest }) =>
-  /^https?:\/\//.test(href) ? (
-    <a href={href} target="_blank" rel="noreferrer" {...rest}>
-      {children}
-    </a>
-  ) : (
-    <Link href={href} {...rest}>
-      {children}
-    </Link>
-  )

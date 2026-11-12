@@ -46,9 +46,19 @@ class Analysis(StrictModel):
     limitations:list[str]=Field(max_length=30)
 
 
+def provider_settings():
+    # Existing LLM settings retain priority; never replace configured providers.
+    if any(os.environ.get(k) for k in ['LLM_API_KEY','LLM_BASE_URL','LLM_MODEL']):
+        return (os.environ.get('LLM_API_KEY'), os.environ.get('LLM_BASE_URL',''), os.environ.get('LLM_MODEL'))
+    return (os.environ.get('GEMINI_API_KEY'), 'https://generativelanguage.googleapis.com/v1beta/openai',
+            os.environ.get('GEMINI_MODEL','gemini-3.8-flash'))
+
+
 def configuration():
-    return dict(configured=bool(os.environ.get('LLM_API_KEY') and os.environ.get('LLM_BASE_URL') and os.environ.get('LLM_MODEL')),
-                required=['LLM_API_KEY','LLM_BASE_URL','LLM_MODEL'],mode='external_model')
+    key,base,model=provider_settings()
+    return dict(configured=bool(key and base and model),connection_verified=False,
+                model=model, provider='gemini' if urlparse(base).hostname=='generativelanguage.googleapis.com' else 'external_model',
+                required=['LLM_API_KEY','LLM_BASE_URL','LLM_MODEL'],alternative=['GEMINI_API_KEY','GEMINI_MODEL'],mode='external_model')
 
 
 def prepare(s,c):
@@ -69,10 +79,8 @@ def prepare(s,c):
 
 
 def generate(inputs):
-    key=os.environ.get('LLM_API_KEY')
-    base=os.environ.get('LLM_BASE_URL','')
-    model=os.environ.get('LLM_MODEL')
-    D.require(key and base and model,'AI_NOT_CONFIGURED','서버에 LLM_API_KEY·LLM_BASE_URL·LLM_MODEL을 설정해야 실제 AI를 호출할 수 있습니다.',503)
+    key,base,model=provider_settings()
+    D.require(key and base and model,'AI_NOT_CONFIGURED','서버에 기존 LLM 설정 또는 GEMINI_API_KEY·GEMINI_MODEL을 설정해야 실제 AI를 호출할 수 있습니다.',503)
     parsed=urlparse(base)
     D.require(parsed.scheme=='https' and parsed.hostname and not parsed.username and not parsed.password,
               'AI_CONFIGURATION','AI 공급자 주소는 자격 증명을 포함하지 않은 HTTPS 주소여야 합니다.',503)
@@ -83,7 +91,8 @@ def generate(inputs):
         response=httpx.post(base.rstrip('/')+'/chat/completions',headers={'Authorization':'Bearer '+key},timeout=40,
             json=dict(model=model,messages=[dict(role='system',content=system),dict(role='user',content=json.dumps(inputs,ensure_ascii=False))],response_format={'type':'json_object'}))
         response.raise_for_status()
-        result=Analysis.model_validate_json(response.json()['choices'][0]['message']['content']).model_dump()
+        payload=response.json()
+        result=Analysis.model_validate_json(payload['choices'][0]['message']['content']).model_dump()
     except httpx.HTTPError:
         raise D.RuleError('AI_PROVIDER_FAILED','AI 공급자 호출에 실패했습니다. 승인 상태는 유지됩니다.',502)
     except (ValueError,KeyError,IndexError,TypeError):
@@ -92,6 +101,10 @@ def generate(inputs):
     D.require(all(set(x['evidence_refs'])<=set(inputs['references']) for x in cited),'AI_EVIDENCE_MISMATCH','AI가 전달하지 않은 근거를 인용했습니다. 결과를 채택하지 않습니다.',502)
     # This authoritative snapshot comes from the rule engine, not the model.
     result['rule_result']=inputs['references']['calculation']
+    usage=payload.get('usage') if isinstance(payload.get('usage'),dict) else {}
+    result['execution']=dict(mode='external',provider_called=True,model=model,
+        provider='gemini' if parsed.hostname=='generativelanguage.googleapis.com' else 'external_model',
+        usage={k:v for k,v in usage.items() if k in ['prompt_tokens','completion_tokens','total_tokens','completion_tokens_details']})
     return result
 
 

@@ -1,12 +1,18 @@
 'use client'
 
+import { Suspense, type ComponentProps } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card, buttonVariants } from '@heroui/react'
 import { PageHeader } from '@/components/ax'
 import { Shell } from '@/components/Shell'
 import { OperationsDashboard } from '@/components/OperationsDashboard'
 import { CoreviaContext } from '@/components/CoreviaContext'
 
-export function NexoraWorkspace({
+export function NexoraWorkspace(props: ComponentProps<typeof WorkspaceContent>) {
+  return <Suspense fallback={<p role="status">업무 화면을 준비하고 있습니다…</p>}><WorkspaceContent {...props} /></Suspense>
+}
+
+function WorkspaceContent({
   authenticated,
   userName,
   isAdmin,
@@ -20,6 +26,8 @@ export function NexoraWorkspace({
   signInUrl: string
   initialTab?: string
 }) {
+  const searchParams = useSearchParams()
+  const workspaceKey = `${initialTab || 'home'}:${searchParams.get('scope') || 'demo'}:${searchParams.get('filter') || ''}`
   const account = authenticated ? <span className="t-small">{userName || '로그인 사용자'}</span> : (
     <a className={buttonVariants({ variant: 'primary', size: 'sm' })} href={signInUrl}>로그인</a>
   )
@@ -36,7 +44,7 @@ export function NexoraWorkspace({
           실제 은행 이체 없는 모의 지급 환경입니다. 관계 일치는 검토 신호이며, 입금계좌를 지급 수취계좌로 추정하지 않습니다.
         </p>
       </Card.Content></Card>
-      {authenticated ? <OperationsDashboard key={initialTab || 'home'} initialTab={initialTab} /> : <Card>
+      {authenticated ? <OperationsDashboard key={workspaceKey} initialTab={initialTab} /> : <Card>
         <Card.Header>
           <Card.Title>로그인이 필요합니다</Card.Title>
           <Card.Description>기업 자료와 승인 이력을 보호하기 위해 로그인한 사용자만 이용할 수 있습니다.</Card.Description>

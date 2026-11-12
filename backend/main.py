@@ -157,6 +157,10 @@ def member(body:Member,identity=Depends(identity)):
         if previous and previous['role']!=body.role:
             for c in s['cases'].values():
                 if any(a['actor']==body.user_id for a in c['approvals']):D.invalidate(s,actor,c,'승인자 업무 권한 변경')
+            with transaction(Showcase.tenant(identity['tenant']),True) as demo:
+                for c in demo['cases'].values():
+                    if any(a['actor']==body.user_id for a in c['approvals']):
+                        D.invalidate(demo,actor,c,'승인자 업무 권한 변경')
         D.event(s,actor,'ROLE_ASSIGNED',body.user_id,dict(role=body.role))
         return dict(ok=True)
 
@@ -277,8 +281,8 @@ def analysis(id:str,identity=Depends(identity)):
         raise
     with transaction(identity['tenant'],True) as s:
         D.require(s['cases'][id]['revision']==revision and D.digest(D.context(s,s['cases'][id]))==input_hash,'STALE_ANALYSIS','분석 중 정보가 변경됐습니다.')
-        s['cases'][id]['analysis']=dict(output=result,model=os.environ['LLM_MODEL'],input_hash=input_hash,source_kind='derived',at=D.now(),stale=False)
-        D.event(s,actor,'AI_ANALYSIS_CREATED',id,dict(model=os.environ['LLM_MODEL'],input_hash=input_hash))
+        s['cases'][id]['analysis']=dict(output=result,model=result['execution']['model'],execution=result['execution'],input_hash=input_hash,source_kind='derived',at=D.now(),stale=False)
+        D.event(s,actor,'AI_ANALYSIS_CREATED',id,dict(model=result['execution']['model'],provider=result['execution']['provider'],input_hash=input_hash))
     return result
 
 
@@ -304,6 +308,9 @@ def showcase_seed(identity=Depends(identity)):
 @app.get('/api/v1/showcase/workspace')
 def showcase_workspace(identity=Depends(showcase_identity)):
     result = workspace(identity)
+    if identity['admin']:
+        with transaction(identity['base_tenant']) as original:
+            result['members'] = original['members']
     if not result['demo']:
         result['demo'] = dict(initialized=False, provenance='DEMO', source_kind='synthetic', label='DEMO 초기 데이터 미생성')
     return result

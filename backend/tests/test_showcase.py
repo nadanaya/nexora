@@ -127,3 +127,15 @@ def test_showcase_missing_rejection_and_relationship_change(client):
     assert all(c['provenance']=='DEMO' for c in after['cases'])
     with transaction(tenant) as s:
         assert not s['cases'] and D.reconcile(s)['total']==232865386
+
+
+def test_showcase_role_registry_and_revoked_authority(client):
+    api, tenant = setup(client)
+    assert request(api, tenant, '/api/v1/showcase/seed', {}).status_code == 200
+    data = get(api, tenant)
+    assert data['members']['reviewer']['role'] == '영업지원팀'
+    c = next(c for c in data['cases'] if c['state']=='PENDING_SUPPORT')
+    assert action(api, tenant, c, 'approve', user='reviewer').status_code == 200
+    assert request(api, tenant, '/api/v1/members', dict(user_id='reviewer',role='조회전용')).status_code == 200
+    updated = next(row for row in get(api, tenant)['cases'] if row['id']==c['id'])
+    assert updated['state']=='REASSESSMENT_REQUIRED' and not updated['approvals']
