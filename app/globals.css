@@ -117,3 +117,75 @@ html:not([data-theme="dark"]) {
 @media (prefers-reduced-motion: reduce) {
   .nx-tour-stack { transform: none; }
 }
+
+/* main branch visual language: dark slate surfaces with rose accents. */
+.nx-main-theme {
+  --bg-surface: #020617;
+  --bg-content: #020617;
+  --surface: #0f172a;
+  --fg-default: #f1f5f9;
+  --fg-secondary: #94a3b8;
+  --border-default: #1e293b;
+  --primary: #e11d48;
+  --primary-hover: #f43f5e;
+  --primary-soft: #4c0519;
+  --primary-soft-hover: #881337;
+  --accent: #fb7185;
+  background: var(--bg-surface);
+  color: var(--fg-default);
+}
+
+.nx-main-theme header {
+  border-color: var(--border-default);
+  background: color-mix(in srgb, #0f172a 95%, transparent);
+  color: var(--fg-default);
+  box-shadow: 0 .9rem 2rem rgb(2 6 23 / .32);
+  backdrop-filter: blur(14px);
+}
+
+.nx-main-theme aside { border-color: var(--border-default); background: #0f172a; }
+.nx-main-theme main { background: #020617; }
+
+.nx-corporate-strip {
+  display: flex;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid #1e293b;
+  padding: .35rem 1rem;
+  background: linear-gradient(90deg, #020617, #0f172a, #020617);
+  color: #cbd5e1;
+  font-size: .7rem;
+}
+
+.nx-corporate-strip__context { display: flex; min-width: 0; align-items: center; gap: .55rem; }
+.nx-corporate-badge { border: 1px solid rgb(244 63 94 / .3); border-radius: .3rem; padding: .12rem .45rem; background: rgb(244 63 94 / .14); color: #fda4af; font-weight: 700; }
+.nx-corporate-muted { color: #94a3b8; }
+.nx-corporate-divider { color: #475569; }
+.nx-corporate-entity { display: inline-flex; align-items: center; gap: .35rem; color: #e2e8f0; font-weight: 650; }
+.nx-corporate-entity i { width: .45rem; height: .45rem; border-radius: 999px; background: #f43f5e; box-shadow: 0 0 .65rem rgb(244 63 94 / .8); }
+.nx-corporate-system { flex: none; color: #64748b; font-size: .62rem; font-weight: 700; letter-spacing: .12em; }
+
+.nx-brand-mark {
+  background: linear-gradient(135deg, #e11d48, #f43f5e 55%, #f59e0b);
+  color: white;
+  box-shadow: 0 .5rem 1.2rem rgb(76 5 25 / .42);
+}
+.nx-brand-mark > span { font-size: 1rem; font-weight: 900; letter-spacing: -.04em; }
+
+.nx-main-theme .corevia-context { border: 1px solid #1e293b; border-radius: 1rem; background: #0f172a; box-shadow: 0 1rem 2.5rem rgb(2 6 23 / .32); }
+.nx-main-theme .corevia-hero { background: linear-gradient(135deg, #0f172a, #020617); color: #f8fafc; }
+.nx-main-theme .corevia-still-life { background: radial-gradient(ellipse at 65% 24%, #9f1239 0%, #4c0519 42%, #0f172a 100%); }
+.nx-main-theme .corevia-intro { background: #0f172a; color: #e2e8f0; }
+.nx-main-theme .corevia-workflow-heading,
+.nx-main-theme .corevia-workflow { background: #020617; color: #f8fafc; }
+.nx-main-theme .corevia-stage { border-color: #475569; }
+.nx-main-theme .corevia-stage-number,
+.nx-main-theme .corevia-stage-detail,
+.nx-main-theme .corevia-workflow-heading > p:last-child { color: #94a3b8; }
+
+@media (max-width: 47.99rem) {
+  .nx-corporate-strip { padding-inline: .75rem; }
+  .nx-corporate-muted, .nx-corporate-divider, .nx-corporate-desktop, .nx-corporate-system { display: none; }
+}
